@@ -1,6 +1,8 @@
 <ul class="list-unstyled list-group">
-    <li class="list-group-item" ng-repeat="t in Times">
-        <span class="fa fa-angle-right pull-right"></span>
+    <li class="list-group-item" ng-repeat="t in Schedule.TerminalCombos[0].Times">
         {{fixMsDate(t.DepartingTime)}}
+        <div class="annotation pull-right" ng-repeat="value in t.AnnotationIndexes"><span ng-bind-html="Schedule.TerminalCombos[0].Annotations[value] | unsafe"></span></div>
     </li>
 </ul>
+
+

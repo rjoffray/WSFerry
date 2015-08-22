@@ -84,14 +84,15 @@ app.controller('arrivingController',['$scope', '$routeParams', '$location', '$re
     });
 
 }]);
-app.controller('timesController',['$scope', '$routeParams', '$location', '$resource','wsfScheduleService', function($scope, $routeParams, $location, $resource,wsfScheduleService) {
+app.controller('timesController',['$scope', '$routeParams', '$location', '$resource','wsfScheduleService','$sce', function($scope, $routeParams, $location, $resource,wsfScheduleService,$sce) {
     //console.log("routeParams: ",$routeParams)
     $scope.departingId = $routeParams.departingId;
     $scope.arrivingId = $routeParams.arrivingId;
 
     wsfScheduleService.getSchedule($scope.departingId,$scope.arrivingId).then(function(response){
+        $scope.Schedule =  response.data;
         $scope.Times =  response.data.TerminalCombos[0].Times;
-        //console.log("Times: ",$scope.Times);
+        console.log("Times: ",$scope.Schedule);
     },function(error){
         //$scope.terminalApi =  error;
         console.log("Error: ",error);
