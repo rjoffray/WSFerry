@@ -1,6 +1,6 @@
 
 
-app.controller('applicationController',['$http','$scope','$timeout','$window','wsfTerminalService','wsfScheduleService','$location','$routeParams','$resource', function($http,$scope,$timeout,$window,wsfTerminalService,wsfScheduleService,$location,$routeParams,$resource) {
+app.controller('applicationController',['$http','$scope','$timeout','$window','wsfTerminalService','wsfScheduleService','$location','$routeParams', function($http,$scope,$timeout,$window,wsfTerminalService,wsfScheduleService,$location,$routeParams) {
     $scope.terminalApi = {};
     $scope.scheduleApi = {};
     $scope.FauntleroyVashon = {};
@@ -56,7 +56,7 @@ app.controller('applicationController',['$http','$scope','$timeout','$window','w
 
     $scope.fixMsDate = function(msDate){
         return moment(msDate).format("h:mm a")
-    }
+    };
 
     $scope.$watch("terminalApi",function(newData,oldData){
         if(newData != oldData){
@@ -84,18 +84,28 @@ app.controller('arrivingController',['$scope', '$routeParams', '$location', '$re
     });
 
 }]);
-app.controller('timesController',['$scope', '$routeParams', '$location', '$resource','wsfScheduleService','$sce', function($scope, $routeParams, $location, $resource,wsfScheduleService,$sce) {
+app.controller('timesController',['$scope', '$routeParams', '$location', '$resource','wsfScheduleService', function($scope, $routeParams, $location, $resource,wsfScheduleService) {
     //console.log("routeParams: ",$routeParams)
     $scope.departingId = $routeParams.departingId;
     $scope.arrivingId = $routeParams.arrivingId;
-
+    $scope.timesApi = {};
     wsfScheduleService.getSchedule($scope.departingId,$scope.arrivingId).then(function(response){
-        $scope.Schedule =  response.data;
-        $scope.Times =  response.data.TerminalCombos[0].Times;
-        console.log("Times: ",$scope.Schedule);
+        $scope.timesApi =  response.data;
+        //$scope.Times =  response.data.TerminalCombos[0].Times;
+        //console.log("Times: ",$scope.Schedule);
     },function(error){
         //$scope.terminalApi =  error;
         console.log("Error: ",error);
     });
+
+    $scope.$watch("timesApi",function(newData,oldData){
+        if(newData != oldData){
+            $scope.Schedule =  newData;
+            $scope.Times =  newData.TerminalCombos[0].Times;
+            console.log("Times: ",$scope.Schedule);
+        }
+
+    });
+
 
 }]);
