@@ -1,0 +1,27 @@
+.view .list-group-item {
+  border-radius: 0;
+}
+.view .list-group-item .am-color {
+  color: orange;
+}
+.view .list-group-item .pm-color {
+  color: darkblue;
+}
+.view .list-group-item.boat-gone {
+  color: lightgray;
+}
+.view .list-group-item.boat-gone .pm-color,
+.view .list-group-item.boat-gone .am-color {
+  color: lightgray;
+}
+.view .list-group-item.active {
+  background-color: lightblue;
+  border: 0;
+}
+.view .list-group-item .annotation {
+  font-size: 9px;
+  width: 60%;
+  text-align: right;
+  line-height: 100%;
+  vertical-align: middle;
+}

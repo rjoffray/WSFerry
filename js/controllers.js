@@ -1,6 +1,12 @@
 
 
-app.controller('applicationController',['$http','$scope','$timeout','$window','wsfTerminalService','wsfScheduleService','$location','$routeParams', function($http,$scope,$timeout,$window,wsfTerminalService,wsfScheduleService,$location,$routeParams) {
+app.controller('applicationController',['$rootScope','$http','$scope','$timeout','$window','wsfTerminalService','wsfScheduleService','$location','$routeParams', function($rootScope,$http,$scope,$timeout,$window,wsfTerminalService,wsfScheduleService,$location,$routeParams) {
+
+    $rootScope.$on("$locationChangeStart",function(event,current,previous){
+        //alert("change start")
+    });
+
+    $scope.viewClass = "home";
     $scope.terminalApi = {};
     $scope.scheduleApi = {};
     $scope.FauntleroyVashon = {};
@@ -69,11 +75,12 @@ app.controller('applicationController',['$http','$scope','$timeout','$window','w
 
 }]);
 
-app.controller('terminalsController',['$http','$scope','$timeout','$window','$routeParams', function($http,$scope,$timeout,$window,wsfTerminalService,wsfScheduleService,$routeParams) {
-
+app.controller('departingController',['$http','$scope','$timeout','$window','$routeParams', function($http,$scope,$timeout,$window,wsfTerminalService,wsfScheduleService,$routeParams) {
+    $scope.viewClass = 'departing';
 }]);
 app.controller('arrivingController',['$scope', '$routeParams', '$location', '$resource','wsfScheduleService', function($scope, $routeParams, $location, $resource,wsfScheduleService) {
     //console.log("routeParams: ",$routeParams)
+    $scope.viewClass = 'arriving';
     $scope.departingId = $routeParams.departingId;
     wsfScheduleService.getTerminalsMates($scope.departingId).then(function(response){
         $scope.Mates =  response.data;
@@ -84,15 +91,26 @@ app.controller('arrivingController',['$scope', '$routeParams', '$location', '$re
     });
 
 }]);
-app.controller('timesController',['$scope', '$routeParams', '$location', '$resource','wsfScheduleService', function($scope, $routeParams, $location, $resource,wsfScheduleService) {
+app.controller('timesController',['$scope', '$routeParams', '$location', '$resource','wsfScheduleService','$timeout','$window', function($scope, $routeParams, $location, $resource,wsfScheduleService,$timeout,$window) {
     //console.log("routeParams: ",$routeParams)
+    $scope.viewClass = 'times';
     $scope.departingId = $routeParams.departingId;
     $scope.arrivingId = $routeParams.arrivingId;
     $scope.timesApi = {};
+    $scope.validDateRangeApi = {};
+    $scope.nextTimeFound = false;
+    $scope.isBoatGone = function(time){
+        $scope.beforeTime  = moment(time).unix().valueOf() < moment().unix().valueOf()?true:false;
+        if($scope.beforeTime){
+            return true;
+        }
+        return false;
+    }
+    $scope.isAmTime = function(time){
+        return moment(time).format('a') == 'am';
+    }
     wsfScheduleService.getSchedule($scope.departingId,$scope.arrivingId).then(function(response){
         $scope.timesApi =  response.data;
-        //$scope.Times =  response.data.TerminalCombos[0].Times;
-        //console.log("Times: ",$scope.Schedule);
     },function(error){
         //$scope.terminalApi =  error;
         console.log("Error: ",error);
@@ -102,7 +120,21 @@ app.controller('timesController',['$scope', '$routeParams', '$location', '$resou
         if(newData != oldData){
             $scope.Schedule =  newData;
             $scope.Times =  newData.TerminalCombos[0].Times;
-            console.log("Times: ",$scope.Schedule);
+
+            $timeout(function(){
+                if($(".times-list")) {
+                    $('.boat-available').first().addClass('active')
+                    $('body').css({
+                        'margin-bottom': $(window).height() + "px"
+                    });
+                }
+                if($(".boat-gone")) {
+                    $('html, body').animate({
+                        scrollTop: $(".boat-gone").last().offset().top
+                    }, 500);
+                }
+            },0);
+
         }
 
     });

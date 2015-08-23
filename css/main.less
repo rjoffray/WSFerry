@@ -1,8 +1,30 @@
-.list-group-item{
-  border-radius: 0;
+.view {
+  .list-group-item {
+	border-radius: 0;
+	.am-color{
+	  color:orange;
+	}
+	.pm-color{
+	  color:darkblue;
+	}
+	&.boat-gone {
+	  color: lightgray;
+	  .pm-color,
+	  .am-color{
+		color: lightgray;
+	  }
+	}
+	&.active {
+	  background-color: lightblue;
+	  border:0;
+	}
+	.annotation {
+	  font-size: 9px;
+	  width: 60%;
+	  text-align: right;
+	  line-height:100%;
+	  vertical-align:middle;
+	}
+  }
 }
-.annotation{
-  font-size:9px;
-  width:60%;
-  text-align:right;
-}
+

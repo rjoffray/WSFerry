@@ -96,8 +96,8 @@ app.service('wsfTerminalService',function($http,$q) {
                 }
                 //_self.terminalServices['CachedData'] = (moment(response.data).unix().valueOf() > storedFlushDate);
                 //console.log("Get New Data: ",moment(response.data).unix().valueOf() > storedFlushDate)
-                if(moment(response.data).unix().valueOf() > storedFlushDate ) {
-                    _self.terminalServices['FlushDate'] = moment(response.data).unix().valueOf();
+                if(moment(response.data).unix().valueOf() > moment(storedFlushDate).unix().valueOf() ) {
+                    _self.terminalServices['FlushDate'] = moment(response.data).format();
                     _self.getBasics().then(function (response) {
                         _self.terminalServices['Basics'] = response.data;
                         _self.getBulletins().then(function (response) {
@@ -150,6 +150,16 @@ app.service('wsfScheduleService',function($http,$q) {
         trip_date: moment().format('YYYY-MM-DD'),
         getCacheFlushDate : function(){
             var url = this.api_root + this.api_schedules + "/cacheflushdate?callback=JSON_CALLBACK&apiaccesscode=" + this.api_key,
+                promise = null;
+            if (promise) {
+                return promise;
+            } else {
+                promise = $http.jsonp(url);
+                return promise;
+            }
+        },
+        getValidDateRange : function(){
+            var url = this.api_root + this.api_schedules + "/validdaterange?callback=JSON_CALLBACK&apiaccesscode=" + this.api_key,
                 promise = null;
             if (promise) {
                 return promise;
@@ -255,11 +265,14 @@ app.service('wsfScheduleService',function($http,$q) {
                 var storedFlushDate = null;
                 if(amplify.store(_self.api_schedule_cache_key)){
                     storedFlushDate = amplify.store(_self.api_schedule_cache_key).FlushDate;
+                    //console.log("storedFlushDate",moment(storedFlushDate).unix().valueOf())
+                    //console.log("responseFlushDate",moment(response.data).unix().valueOf())
                 }
                 //_self.terminalServices['CachedData'] = (moment(response.data).unix().valueOf() > storedFlushDate);
-                //console.log("Get New Data: ",moment(response.data).unix().valueOf() > storedFlushDate)
-                if(moment(response.data).unix().valueOf() > storedFlushDate ) {
-                    _self.scheduleServices['FlushDate'] = moment(response.data).unix().valueOf();
+
+                console.log("Get New Data: ",moment(response.data).unix().valueOf() > moment(storedFlushDate).unix().valueOf())
+                if(moment(response.data).unix().valueOf() > moment(storedFlushDate).unix().valueOf() ) {
+                    _self.scheduleServices['FlushDate'] = moment(response.data).format();
                     _self.getTerminals().then(function (response) {
                         _self.scheduleServices['Terminals'] = response.data;
                         _self.getTerminalsAndMates().then(function (response) {
@@ -272,7 +285,14 @@ app.service('wsfScheduleService',function($http,$q) {
                                     //deferred.resolve(_self.scheduleServices);
                                     _self.getActiveSeasons().then(function (response) {
                                         _self.scheduleServices['ActiveSeasons'] = response.data;
-                                        deferred.resolve(_self.scheduleServices);
+                                        //deferred.resolve(_self.scheduleServices);
+                                        _self.getValidDateRange().then(function (response) {
+                                            _self.scheduleServices['ValidDateRange'] = response.data;
+                                            _self.scheduleServices.ValidDateRange.DateFrom = moment(_self.scheduleServices.ValidDateRange.DateFrom).format();
+                                            _self.scheduleServices.ValidDateRange.DateThru = moment(_self.scheduleServices.ValidDateRange.DateThru).format();
+                                            amplify.store(_self.api_schedule_cache_key, _self.scheduleServices);
+                                            deferred.resolve(_self.scheduleServices);
+                                        });
                                     });
                                 });
                             });
