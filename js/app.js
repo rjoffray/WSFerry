@@ -31,3 +31,27 @@
         };
     });
 
+_.mixin({
+    'findByValues': function(collection, property, values) {
+        return _.filter(collection, function(item) {
+            return _.contains(values, item[property]);
+        });
+    },
+    'findByString': function(collection, property, val) {
+        return _.filter(collection, function(item) {
+            //console.log("****isEqual****",item[property],val)
+            return _.isEqual(item[property],val);
+        });
+    },
+    'findByPartialValue': function(collection, property, val) {
+        return _.filter(collection, function(item) {
+            return item[property].toString().toLowerCase().search(val.toString().toLowerCase()) >= 0;
+        });
+    },
+    'findBetweenValue': function(collection, property, min, max) {
+        return _.filter(collection, function(item) {
+            return parseInt(item[property].replace(",","")).between(min,max,true);
+        });
+    }
+});
+

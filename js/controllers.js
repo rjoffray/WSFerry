@@ -15,7 +15,7 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
 
     wsfTerminalService.getTerminalServices().then(function(response){
         $scope.terminalApi =  response;
-        //console.log("Promise returned: ",response);
+        //console.log("terminalApi promise returned: ",response);
     },function(error){
         //$scope.terminalApi =  error;
         console.log("Error: ",error);
@@ -38,14 +38,14 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
     $scope.$watch("terminalApi",function(newData,oldData){
         if(newData != oldData){
             $scope.terminalApi = newData;
-            //console.log("Terminal service watched data! ",newData)
+            console.log("Terminal service watched data! ",newData)
         }
 
     });
     $scope.$watch("scheduleApi",function(newData,oldData){
         if(newData != oldData){
             $scope.scheduleApi = newData;
-            //console.log("Schedule service watched data! ",newData)
+            console.log("Schedule service watched data! ",newData)
         }
 
     });
@@ -63,7 +63,16 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
     $scope.fixMsDate = function(msDate){
         return moment(msDate).format("h:mm a")
     };
-
+    $scope.getTerminalNameFromId = function(id){
+        var name = ""
+        _.forEach($scope.terminalApi.Basics,function(value,key){
+            if(value.TerminalID == parseInt(id)){
+                name = value.TerminalName;
+                return false;
+            }
+        });
+        return name;
+    }
     $scope.$watch("terminalApi",function(newData,oldData){
         if(newData != oldData){
             $scope.Terminals = newData.Basics;
@@ -109,6 +118,7 @@ app.controller('timesController',['$scope', '$routeParams', '$location', '$resou
     $scope.isAmTime = function(time){
         return moment(time).format('a') == 'am';
     }
+
     wsfScheduleService.getSchedule($scope.departingId,$scope.arrivingId).then(function(response){
         $scope.timesApi =  response.data;
     },function(error){
