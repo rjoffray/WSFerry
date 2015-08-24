@@ -1,0 +1,63 @@
+.view .list-group .list-group-item {
+  border-radius: 0;
+}
+.view .list-group .list-group-item.navbar-heading {
+  font-weight: 600;
+  text-align: center;
+  color: white;
+  background-color: darkslategray;
+  border-color: darkslategray;
+  padding: .5rem 1rem .6rem 1.25rem;
+}
+.view .list-group .list-group-item.navbar-heading .back-button {
+  position: relative;
+  float: left;
+  background-color: lightgray;
+  color: darkslategray;
+  padding: 1px 6px 1px 16px;
+}
+.view .list-group .list-group-item.navbar-heading .back-button::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  content: ' 	';
+  width: 10px;
+  height: 26px;
+  border-width: 13px 10px 13px 0;
+  border-style: solid;
+  border-color: darkslategray;
+  border-right-color: lightgray;
+}
+.view .list-group .list-group-item.list-heading,
+.view .list-group .list-group-item.list-footer {
+  background-color: aliceblue;
+  color: darkgray;
+  height: 30px;
+  padding: .1rem 1rem .3rem 1rem;
+  text-align: center;
+}
+.view .list-group .list-group-item .am-color {
+  color: orange;
+}
+.view .list-group .list-group-item .pm-color {
+  color: darkblue;
+}
+.view .list-group .list-group-item.boat-gone {
+  color: lightgray;
+}
+.view .list-group .list-group-item.boat-gone .pm-color,
+.view .list-group .list-group-item.boat-gone .am-color {
+  color: lightgray;
+}
+.view .list-group .list-group-item.active {
+  background-color: lightblue;
+  border: 0;
+}
+.view .list-group .list-group-item .annotation {
+  font-size: 9px;
+  width: 60%;
+  text-align: right;
+  line-height: 100%;
+  vertical-align: middle;
+}
