@@ -17,6 +17,7 @@ app.service('wsfTerminalService',function($http,$q) {
         getBasics : function(vars){
             var url = this.api_root + this.api_terminals + "/terminalbasics?callback=JSON_CALLBACK&apiaccesscode=" + this.api_key,
                 promise = null;
+            console.log(url)
             if (promise) {
                 return promise;
             } else {
@@ -96,8 +97,8 @@ app.service('wsfTerminalService',function($http,$q) {
                 }
                 //_self.terminalServices['CachedData'] = (moment(response.data).unix().valueOf() > storedFlushDate);
                 //console.log("Get New Data: ",moment(response.data).unix().valueOf() > storedFlushDate)
-                if(moment(response.data).unix().valueOf() > moment(storedFlushDate).unix().valueOf() ) {
-                    _self.terminalServices['FlushDate'] = moment(response.data).format();
+                if(moment(response.data).unix().valueOf() > storedFlushDate ) {
+                    _self.terminalServices['FlushDate'] = moment(response.data).unix().valueOf();
                     _self.getBasics().then(function (response) {
                         _self.terminalServices['Basics'] = response.data;
                         _self.getBulletins().then(function (response) {
@@ -114,8 +115,8 @@ app.service('wsfTerminalService',function($http,$q) {
                                                 _self.terminalServices['WaitTimes'] = response.data;
                                                 var then = moment().format('DD/MM/YYYY HH:mm:ss.SSS');
                                                 var duration = moment(moment(then, 'DD/MM/YYYY HH:mm:ss.SSS').diff(moment(_self.now, 'DD/MM/YYYY HH:mm:ss.SSS'))).format('mm:ss.SSS')
-                                                _self.terminalServices['ResponseTime'] = duration;
-                                                _self.terminalServices['CachedData'] = false;
+                                               // _self.terminalServices['ResponseTime'] = duration;
+                                                //_self.terminalServices['CachedData'] = false;
                                                 amplify.store(_self.api_terminal_cache_key, _self.terminalServices);
                                                 deferred.resolve(_self.terminalServices);
                                             })
@@ -127,10 +128,10 @@ app.service('wsfTerminalService',function($http,$q) {
                     });
                 }else{
                     _self.terminalServices = amplify.store(_self.api_terminal_cache_key);
-                    _self.terminalServices['CachedData'] = true;
+                    //_self.terminalServices['CachedData'] = true;
                     var then = moment().format('DD/MM/YYYY HH:mm:ss.SSS');
                     var duration = moment(moment(then, 'DD/MM/YYYY HH:mm:ss.SSS').diff(moment(_self.now, 'DD/MM/YYYY HH:mm:ss.SSS'))).format('mm:ss.SSS')
-                    _self.terminalServices['ResponseTime'] = duration;
+                    //_self.terminalServices['ResponseTime'] = duration;
                     deferred.resolve(_self.terminalServices);
                 }
             });
@@ -270,9 +271,9 @@ app.service('wsfScheduleService',function($http,$q) {
                 }
                 //_self.terminalServices['CachedData'] = (moment(response.data).unix().valueOf() > storedFlushDate);
 
-                console.log("Get New Data: ",moment(response.data).unix().valueOf() > moment(storedFlushDate).unix().valueOf())
-                if(moment(response.data).unix().valueOf() > moment(storedFlushDate).unix().valueOf() ) {
-                    _self.scheduleServices['FlushDate'] = moment(response.data).format();
+                console.log("Get New Data: ",moment(response.data).unix().valueOf() > storedFlushDate)
+                if(moment(response.data).unix().valueOf() > storedFlushDate ) {
+                    _self.scheduleServices['FlushDate'] = moment(response.data).unix().valueOf();
                     _self.getTerminals().then(function (response) {
                         _self.scheduleServices['Terminals'] = response.data;
                         _self.getTerminalsAndMates().then(function (response) {
@@ -300,10 +301,10 @@ app.service('wsfScheduleService',function($http,$q) {
                     });
                 }else{
                     _self.scheduleServices = amplify.store(_self.api_schedule_cache_key);
-                    _self.scheduleServices['CachedData'] = true;
+                    //_self.scheduleServices['CachedData'] = true;
                     var then = moment().format('DD/MM/YYYY HH:mm:ss.SSS');
                     var duration = moment(moment(then, 'DD/MM/YYYY HH:mm:ss.SSS').diff(moment(_self.now, 'DD/MM/YYYY HH:mm:ss.SSS'))).format('mm:ss.SSS')
-                    _self.scheduleServices['ResponseTime'] = duration;
+                    //_self.scheduleServices['ResponseTime'] = duration;
                     deferred.resolve(_self.scheduleServices);
                 }
             });
