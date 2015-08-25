@@ -37,10 +37,11 @@
 
 </head>
 <body ng-controller="applicationController" class="js" ng-class="{'active-nav':menuOpen}" ng-swipe-right="goBack()" ng-swipe-left="goForward()">
+<div id="scrolltop"></div>
 
 <nav role="right-nav">
     <ul class="list-unstyled list-group">
-        <li class="list-group-item" ng-click="goToUrl('/#/departing')">
+        <li class="list-group-item" ng-click='goToUrl("/")'>
             <span class="pull-left fa fa-home"></span>
             Departure Terminals
         </li>

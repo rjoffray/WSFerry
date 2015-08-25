@@ -1,6 +1,6 @@
 
 
-app.controller('applicationController',['$rootScope','$http','$scope','$timeout','$window','wsfTerminalService','wsfScheduleService','$location','$routeParams', function($rootScope,$http,$scope,$timeout,$window,wsfTerminalService,wsfScheduleService,$location,$routeParams) {
+app.controller('applicationController',['$rootScope','$http','$scope','$timeout','$window','wsfTerminalService','wsfScheduleService','$location','$routeParams','$anchorScroll', function($rootScope,$http,$scope,$timeout,$window,wsfTerminalService,wsfScheduleService,$location,$routeParams,$anchorScroll) {
 
     $rootScope.$on("$locationChangeStart",function(event,current,previous){
         //alert("change start")
@@ -21,6 +21,7 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
         }
     });
     $scope.openNav = function(){
+        $anchorScroll("scrolltop")
         $timeout(function(){
             $scope.menuOpen = true
             $('body').addClass("nav-open");
@@ -28,6 +29,7 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
 
     }
     $scope.closeNav = function(){
+        $anchorScroll("scrollto")
         $timeout(function(){
             $scope.menuOpen = false;
             $('body').removeClass("nav-open");
@@ -95,11 +97,11 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
     });
 
     $scope.goArriving = function ( id ) {
-        $location.path( "/arriving/"+id );
+        $location.path( "arriving/"+id );
     };
 
     $scope.goTimes = function ( departing, arriving ) {
-        $location.path( "/times/"+departing+"/"+arriving );
+        $location.path( "times/"+departing+"/"+arriving );
     };
 
 
@@ -194,7 +196,7 @@ app.controller('timesController',['$scope', '$routeParams', '$location', '$resou
         //console.log();
         var pathArray = $location.path().split("/");
         console.log(pathArray)
-        $location.path("/"+pathArray[1]+"/"+pathArray[3]+"/"+pathArray[2])
+        $location.path(pathArray[1]+"/"+pathArray[3]+"/"+pathArray[2])
     }
 
     $scope.$watch("timesApi",function(newData,oldData){
