@@ -41,7 +41,7 @@
                 //trigger animation
                 animation.start();
                 //setup done callback
-                animation.done(doneFn);
+                //animation.done(doneFn);
             }
         }
     }])

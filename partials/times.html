@@ -2,10 +2,21 @@
     <li class="list-group-item navbar-header">
         <span class="pull-left fa fa-arrow-circle-left" ng-click="goBack()"></span>
         <span class="pull-right fa fa-bars" ng-click="$parent.menuOpen = !$parent.menuOpen"></span><span class="breadcrumb-text">{{getTerminalNameFromId(departingId)}} &nbsp;&nbsp;<span class="fa fa-angle-right"></span>&nbsp;&nbsp; {{getTerminalNameFromId(arrivingId)}}</span></li>
+    <li class="list-group-item list-heading button-group">
+        <div class="btn-group btn-group-sm" role="group" aria-label="Buttons">
+            <button type="button" class="btn btn-secondary" ng-click="reverseSchedule()">reverse</button>
+            <button type="button" class="btn btn-secondary">cameras</button>
+            <button type="button" class="btn btn-secondary">fares</button>
+            <button type="button" class="btn btn-secondary">alerts</button>
+        </div>
+    </li>
     <li class="list-group-item" ng-repeat="t in Schedule.TerminalCombos[0].Times" ng-class="isBoatGone(t.DepartingTime)?'boat-gone':'boat-available'">
         <span ng-class="isAmTime(t.DepartingTime)?'am-color':'pm-color'">{{fixMsDate(t.DepartingTime)}}</span>
         <div class="annotation pull-right" ng-repeat="value in t.AnnotationIndexes"><span ng-bind-html="Schedule.TerminalCombos[0].Annotations[value] | unsafe"></span></div>
     </li>
+    <li class="list-group-item navbar-header">
+        <span class="pull-left fa fa-arrow-circle-left" ng-click="goBack()"></span>
+        &nbsp;</li>
 
 
 </ul>

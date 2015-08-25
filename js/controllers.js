@@ -111,8 +111,11 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
 
 app.controller('departingController',['$http','$scope','$timeout','$window','$routeParams', function($http,$scope,$timeout,$window,wsfTerminalService,wsfScheduleService,$routeParams) {
     $scope.viewClass = 'departing';
+    $timeout(function(){
+        $window.scrollTo(0,0)
+    },100);
 }]);
-app.controller('arrivingController',['$scope', '$routeParams', '$location', '$resource','wsfScheduleService', function($scope, $routeParams, $location, $resource,wsfScheduleService) {
+app.controller('arrivingController',['$scope', '$routeParams', '$location', '$resource','wsfScheduleService','$window','$timeout', function($scope, $routeParams, $location, $resource,wsfScheduleService,$window,$timeout) {
     //console.log("routeParams: ",$routeParams)
     $scope.viewClass = 'arriving';
     $scope.departingId = $routeParams.departingId;
@@ -123,6 +126,10 @@ app.controller('arrivingController',['$scope', '$routeParams', '$location', '$re
         //$scope.terminalApi =  error;
         console.log("Error: ",error);
     });
+
+    $timeout(function(){
+        $window.scrollTo(0,0)
+    },100);
 
 }]);
 app.controller('timesController',['$scope', '$routeParams', '$location', '$resource','wsfScheduleService','$timeout','$window', function($scope, $routeParams, $location, $resource,wsfScheduleService,$timeout,$window) {
@@ -150,6 +157,12 @@ app.controller('timesController',['$scope', '$routeParams', '$location', '$resou
         //$scope.terminalApi =  error;
         console.log("Error: ",error);
     });
+    $scope.reverseSchedule = function(){
+        //console.log();
+        var pathArray = $location.path().split("/");
+        console.log(pathArray)
+        $location.path("/"+pathArray[1]+"/"+pathArray[3]+"/"+pathArray[2])
+    }
 
     $scope.$watch("timesApi",function(newData,oldData){
         if(newData != oldData){
@@ -171,7 +184,7 @@ app.controller('timesController',['$scope', '$routeParams', '$location', '$resou
                 //$(".active-nav [role=right-nav]").css({
                 //    height:$(".active-nav [role=main]").height()
                 //})
-            },200);
+            },100);
 
         }
 
