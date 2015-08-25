@@ -27,6 +27,12 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
             console.log("back")
         },0);
     }
+    $scope.goForward = function(){
+        $timeout(function(){
+            $window.history.forward();
+            console.log("forward")
+        },0);
+    }
     $scope.goToUrl = function(url){
         $location.path(url);
         $scope.menuOpen = false;
