@@ -159,14 +159,14 @@ app.controller('timesController',['$scope', '$routeParams', '$location', '$resou
             $timeout(function(){
                 if($(".times-list")) {
                     $('.boat-available').first().addClass('active')
-                    //$('body').css({
-                    //    'margin-bottom': $(window).height() + "px"
-                    //});
+                    $('body').css({
+                        'margin-bottom': $(window).height() + "px"
+                    });
                 }
                 if($(".boat-gone")) {
-                    //$('html, body').animate({
-                    //    scrollTop: $(".boat-gone").last().offset().top
-                    //}, 500);
+                    $('html, body').animate({
+                        scrollTop: $(".boat-gone").last().offset().top
+                    }, 500);
                 }
                 //$(".active-nav [role=right-nav]").css({
                 //    height:$(".active-nav [role=main]").height()
