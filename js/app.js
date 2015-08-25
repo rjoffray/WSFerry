@@ -1,6 +1,7 @@
 /**
  * Created by rjoffray on 8/16/15.
  */
+    moment.tz.setDefault("America/Los_Angeles");
 
     var app = angular.module('wsfApplication', ['ngRoute','ngResource','ngAnimate']);
 

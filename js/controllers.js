@@ -5,7 +5,26 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
     $rootScope.$on("$locationChangeStart",function(event,current,previous){
         //alert("change start")
     });
+    $scope.menuOpen = false;
+    angular.element(".offcanvas").on("click",function(event){
+        var _self=this;
+        console.log(event,event.offsetX,$("[role=right-nav]")[0].offsetWidth);
+        console.log("clicked to left:",event.target.className)
+        if ((event.offsetX < $("[role=right-nav]")[0].offsetWidth) && event.target.className == "offcanvas") {
 
+            $scope.closeNav();
+        }
+    });
+    $scope.closeNav = function(){
+        $timeout(function(){
+            $scope.menuOpen = false;
+        },0);
+
+    }
+    $scope.goToUrl = function(url){
+        $location.path(url);
+        $scope.menuOpen = false;
+    }
     $scope.viewClass = "home";
     $scope.terminalApi = {};
     $scope.scheduleApi = {};

@@ -1,5 +1,66 @@
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+[role="left-nav"],
+[role="main"],
+[role="right-nav"] {
+  transition: .3s all ease;
+  width: 100%;
+  float: left;
+  position: relative;
+}
+[role="left-nav"] {
+  margin-left: -100%;
+  float: left;
+  min-height: 100%;
+  z-index: 1000;
+  background-color: lightgray;
+}
+[role="main"] {
+  margin-left: 0;
+  float: left;
+  z-index: 9;
+}
+[role="right-nav"] {
+  margin-right: -200%;
+  float: right;
+  min-height: 100%;
+  z-index: 1000;
+  background-color: lightgray;
+}
+[role="right-nav"] .fa {
+  font-size: 24px!important;
+}
+.active-nav [role="left-nav"] {
+  margin-left: 0;
+  width: 80%;
+}
+.active-nav .offcanvas::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: black;
+  opacity: .5;
+  z-index: 950;
+}
+.active-nav [role="main"] {
+  margin-left: -80%;
+}
+.active-nav [role="right-nav"] {
+  margin-right: 0%;
+  float: right;
+  width: 80%;
+}
 .view .list-group .list-group-item {
   border-radius: 0;
+}
+.view .list-group .list-group-item .fa-bars {
+  font-size: 24px!important;
 }
 .view .list-group .list-group-item.navbar-heading {
   font-weight: 600;

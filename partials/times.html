@@ -1,5 +1,5 @@
 <ul class="times-list list-unstyled list-group">
-    <li class="list-group-item navbar-heading">{{getTerminalNameFromId(departingId)}} &nbsp;&nbsp;<span class="fa fa-angle-right"></span>&nbsp;&nbsp; {{getTerminalNameFromId(arrivingId)}}</li>
+    <li class="list-group-item navbar-heading"><span class="pull-right fa fa-bars" ng-click="$parent.menuOpen = !$parent.menuOpen"></span>{{getTerminalNameFromId(departingId)}} &nbsp;&nbsp;<span class="fa fa-angle-right"></span>&nbsp;&nbsp; {{getTerminalNameFromId(arrivingId)}}</li>
     <li class="list-group-item" ng-repeat="t in Schedule.TerminalCombos[0].Times" ng-class="isBoatGone(t.DepartingTime)?'boat-gone':'boat-available'">
         <span ng-class="isAmTime(t.DepartingTime)?'am-color':'pm-color'">{{fixMsDate(t.DepartingTime)}}</span>
         <div class="annotation pull-right" ng-repeat="value in t.AnnotationIndexes"><span ng-bind-html="Schedule.TerminalCombos[0].Annotations[value] | unsafe"></span></div>
