@@ -147,6 +147,9 @@ body.active-nav [role="right-nav"] {
   margin-top: 44px;
   margin-bottom: 44px;
 }
+.view.times .list-group {
+  margin-top: 44px;
+}
 .view.slide.ng-leave {
   animation: fadeOut 0.5s both ease-in;
   z-index: 8888;
@@ -157,6 +160,21 @@ body.active-nav [role="right-nav"] {
   position: absolute;
   top: 0;
   left: 0;
+}
+.view .button-group {
+  background-color: rgba(240, 248, 255, 0.7);
+  position: fixed;
+  text-align: center;
+  margin-top: 0;
+  z-index: 10000;
+  width: 100%;
+  height: 47px;
+  line-height: 42px;
+  vertical-align: middle;
+  padding: 0 ;
+}
+.view .button-group .btn-group {
+  margin: 0 auto;
 }
 .view .list-group .list-group-item {
   border-radius: 0;
@@ -171,17 +189,6 @@ body.active-nav [role="right-nav"] {
   height: 30px;
   padding: .1rem 1rem .3rem 1rem;
   text-align: center;
-}
-.view .list-group .list-group-item.list-heading.button-group,
-.view .list-group .list-group-item.list-footer.button-group {
-  background-color: rgba(240, 248, 255, 0.7);
-  position: fixed;
-  margin-top: 0;
-  z-index: 10000;
-  width: 100%;
-  height: 47px;
-  line-height: 42px;
-  vertical-align: middle;
 }
 .view .list-group .list-group-item .am-color {
   color: orange;

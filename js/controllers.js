@@ -188,6 +188,7 @@ app.controller('timesController',['$scope', '$routeParams', '$location', '$resou
 
     wsfScheduleService.getSchedule($scope.departingId,$scope.arrivingId).then(function(response){
         $scope.timesApi =  response.data;
+        console.log("Schedule Response",response.data)
     },function(error){
         //$scope.terminalApi =  error;
         console.log("Error: ",error);
@@ -216,15 +217,8 @@ app.controller('timesController',['$scope', '$routeParams', '$location', '$resou
                         scrollTop: $scope.nextBoatOffset
                     }, 200);
                 }
-
-
-                //var someElement = angular.element(document.getElementById('scrollto'));
-                //$document.scrollToElement(someElement, 20, 300);
-                //angular.element("body").scrollTo("scrollto",500);
                 $anchorScroll("scrollto")
-                //$(".active-nav [role=right-nav]").css({
-                //    height:$(".active-nav [role=main]").height()
-                //})
+
             },0);
 
         }

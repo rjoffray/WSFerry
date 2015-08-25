@@ -1,15 +1,16 @@
+<div class="list-group-item list-heading button-group">
+    <div class="btn-group btn-group-sm" role="group" aria-label="Buttons">
+        <button type="button" class="btn btn-secondary" ng-click="reverseSchedule()">reverse</button>
+        <button type="button" class="btn btn-secondary">cameras</button>
+        <button type="button" class="btn btn-secondary">fares</button>
+        <button type="button" class="btn btn-secondary">alerts</button>
+    </div>
+</div>
 <ul class="times-list list-unstyled list-group">
 
-    <li class="list-group-item list-heading button-group">
-        <div class="btn-group btn-group-sm" role="group" aria-label="Buttons">
-            <button type="button" class="btn btn-secondary" ng-click="reverseSchedule()">reverse</button>
-            <button type="button" class="btn btn-secondary">cameras</button>
-            <button type="button" class="btn btn-secondary">fares</button>
-            <button type="button" class="btn btn-secondary">alerts</button>
-        </div>
-    </li>
+
     <li class="list-group-item" ng-repeat="t in Schedule.TerminalCombos[0].Times" ng-class="isBoatGone(t.DepartingTime)?'boat-gone':'boat-available'">
-        <span ng-class="isAmTime(t.DepartingTime)?'am-color':'pm-color'">{{fixMsDate(t.DepartingTime)}}</span>
+        <span ng-class="isAmTime(t.DepartingTime)?'am-color':'pm-color'">{{fixMsDate(t.DepartingTime)}} <span ng-if="t.ArrivingTime != null" class=" pull-right">{{fixMsDate(t.ArrivingTime)}}</span></span>
         <div class="annotation pull-right" ng-repeat="value in t.AnnotationIndexes"><span ng-bind-html="Schedule.TerminalCombos[0].Annotations[value] | unsafe"></span></div>
     </li>
 
