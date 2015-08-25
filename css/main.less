@@ -1,50 +1,4 @@
-/* ANIMATIONS
-============================================================================= */
 
-/* leaving animations ----------------------------------------- */
-/* rotate and fall */
-@keyframes rotateFall {
-  0%      { transform: rotateZ(0deg); }
-  20%     { transform: rotateZ(10deg); animation-timing-function: ease-out; }
-  40%     { transform: rotateZ(17deg); }
-  60%     { transform: rotateZ(16deg); }
-  100%    { transform: translateY(100%) rotateZ(17deg); }
-}
-
-/* slide in from the bottom */
-@keyframes slideOutLeft {
-  from    { transform:translateX(0);opacity:1 }
-  to      { transform: translateX(-100%);opacity:0 }
-}
-
-/* rotate out newspaper */
-@keyframes rotateOutNewspaper {
-  to      { transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
-}
-
-/* entering animations --------------------------------------- */
-/* scale up */
-@keyframes scaleUp {
-  from    { opacity: 0.3; -webkit-transform: scale(0.8); }
-}
-
-/* slide in from the right */
-@keyframes slideInRight {
-  from    { transform:translateX(100%); }
-  to      { transform: translateX(0); }
-}
-/* slide in from the right */
-@keyframes slideOutRight {
-  from    { transform:translateX(0); }
-  to      { transform: translateX(100%); }
-}
-
-/* slide in from the bottom */
-@keyframes slideInUp {
-  from    { transform:translateY(100%); }
-  to      { transform: translateY(0); }
-}
-/* slide in from the bottom */
 @keyframes fadeIn {
   from    { opacity:0; }
   to      { opacity:1; }
@@ -57,6 +11,15 @@ body,html{
   width:100%;
   height:100%;
   overflow-x: hidden;
+  margin:0;
+}
+body.active-nav{
+  .bottom-filler{
+	height:0;
+  }
+  [role="right-nav"]{
+	min-height:100%;
+  }
 }
 [role="left-nav"],
 [role="main"],
@@ -80,14 +43,64 @@ body,html{
   float: right;
   z-index:9;
 
+  .navbar-header,.navbar-footer {
+	position:fixed;
+	z-index:10000;
+	top:0;
+	width:100%;
+	font-weight: 600;
+	text-align: center;
+	color: white;
+	background-color: darkslategray;
+	border-color: darkslategray;
+	padding: .5rem 1rem .6rem 1.25rem;
+	.fa{
+	  font-size:24px!important;
+	}
+	.breadcrumb-text{
+	  white-space: nowrap;
+	  overflow: hidden;
+	  text-overflow: ellipsis;
+	  /* height: 6em; */
+	  font-size: 14px;
+	  line-height: 24px;
+	  vertical-align: top;
+	}
+	.back-button {
+	  position: relative;
+	  float: left;
+	  background-color: lightgray;
+	  color: darkslategray;
+	  padding: 1px 6px 1px 16px;
+	  &::before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		content: ' 	';
+		width: 10px;
+		height: 26px;
+		border-width: 13px 10px 13px 0;
+		border-style: solid;
+		border-color: darkslategray;
+		border-right-color: lightgray;
 
+	  }
+	}
+  }
+  .navbar-footer{
+	position:fixed;
+	z-index:10000;
+	top:auto;
+	bottom:0;
+
+  }
 
 }
 [role="right-nav"] {
   margin-right:-200%;
   top:0;
   float:right;
-  min-height:100%;
   z-index:1000;
   background-color:white;
   .fa{
@@ -129,6 +142,8 @@ body,html{
 
 .view {
   width:100%;
+  margin-top:44px;
+  margin-bottom:44px;
   &.slide.ng-leave           { animation: fadeOut 0.5s both ease-in; z-index: 8888; }
   &.slide          { animation: fadeIn 0.25s both ease-in; z-index: 9999;position:absolute;top:0;left:0 }
 
@@ -136,48 +151,8 @@ body,html{
 
 	.list-group-item {
 	  border-radius: 0;
-	  .fa{
-		font-size:24px!important;
-	  }
-	  &.navbar-header,&.navbar-footer {
 
-		font-weight: 600;
-		text-align: center;
-		color: white;
-		background-color: darkslategray;
-		border-color: darkslategray;
-		padding: .5rem 1rem .6rem 1.25rem;
-		.breadcrumb-text{
-		  white-space: nowrap;
-		  overflow: hidden;
-		  text-overflow: ellipsis;
-		  /* height: 6em; */
-		  font-size: 14px;
-		  line-height: 24px;
-		  vertical-align: top;
-		}
-		.back-button {
-		  position: relative;
-		  float: left;
-		  background-color: lightgray;
-		  color: darkslategray;
-		  padding: 1px 6px 1px 16px;
-		  &::before {
-			position: absolute;
-			top: 0;
-			left: 0;
-			bottom: 0;
-			content: ' 	';
-			width: 10px;
-			height: 26px;
-			border-width: 13px 10px 13px 0;
-			border-style: solid;
-			border-color: darkslategray;
-			border-right-color: lightgray;
 
-		  }
-		}
-	  }
 	  &.list-heading,
 	  &.list-footer{
 		background-color: aliceblue;
@@ -186,6 +161,11 @@ body,html{
 		padding: .1rem 1rem .3rem 1rem;
 		text-align: center;
 		&.button-group{
+		  background-color:rgba(240, 248, 255,.7);
+		  position:fixed;
+		  margin-top:3px;
+		  z-index:10000;
+		  width:100%;
 		  height:47px;
 		  line-height:42px;
 		  vertical-align: middle;

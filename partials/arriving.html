@@ -1,16 +1,12 @@
 <ul class="list-unstyled list-group">
-    <li class="list-group-item navbar-header">
-        <span class="pull-left fa fa-arrow-circle-left" ng-click="goBack()"></span>
-        <span class="pull-right fa fa-bars" ng-click="$parent.menuOpen = !$parent.menuOpen"></span>{{getTerminalNameFromId(departingId)}}</li>
+
     <li class="list-group-item list-heading"> arriving terminals</li>
     <li class="list-group-item" ng-repeat="t in Mates"  ng-click="goTimes(departingId,t.TerminalID)">
         <span class="fa fa-angle-right pull-right"></span>
         {{t.Description}}
     </li>
     <li class="list-group-item list-footer">arriving terminals</li>
-    <li class="list-group-item navbar-header">
-        <span class="pull-left fa fa-arrow-circle-left" ng-click="goBack()"></span>
-        &nbsp;</li>
+
 
 
 </ul>

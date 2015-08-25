@@ -5,8 +5,7 @@
     <title>WSF Schedule</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
-    ">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css"/>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
@@ -16,6 +15,9 @@
     <script src="https://code.angularjs.org/1.4.4/angular-route.min.js"></script>
     <script src="https://code.angularjs.org/1.4.4/angular-animate.min.js"></script>
     <script src="https://code.angularjs.org/1.4.4/angular-touch.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-scroll/0.7.2/angular-scroll.min.js"></script>
+
+
 
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>-->
 
@@ -50,15 +52,24 @@
             <span class="pull-left fa fa-ticket"></span>
             Ticket Lookup
         </li>
+        <li class="list-group-item">
+            <span class="pull-left fa fa-gear"></span>
+            Preferences
+        </li>
     </ul>
 
 </nav>
 <div class="offcanvas">
     <div role="main">
+        <div class="list-group-item navbar-header"><span class="pull-right fa fa-bars" ng-click="openNav()"></span>{{menuTitle}}</div>
         <div ng-view class="view {{viewClass}} slide">
 
         </div>
+
+        <div class="list-group-item navbar-footer"><span class="pull-left fa fa-info" ng-click="goInfo()"></span>&nbsp;</div>
+
     </div>
 </div>
+
 </body>
 </html>

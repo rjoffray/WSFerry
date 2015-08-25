@@ -5,7 +5,12 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
     $rootScope.$on("$locationChangeStart",function(event,current,previous){
         //alert("change start")
     });
+
     $scope.menuOpen = false;
+    $scope.menuTitle = "";
+    $scope.setTitle= function(title){
+        $scope.menuTitle = title;
+    }
     angular.element(".offcanvas").on("click",function(event){
         var _self=this;
         console.log(event,event.offsetX,$("[role=right-nav]")[0].offsetWidth);
@@ -15,9 +20,17 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
             $scope.closeNav();
         }
     });
+    $scope.openNav = function(){
+        $timeout(function(){
+            $scope.menuOpen = true
+            $('body').addClass("nav-open");
+        },0);
+
+    }
     $scope.closeNav = function(){
         $timeout(function(){
             $scope.menuOpen = false;
+            $('body').removeClass("nav-open");
         },0);
 
     }
@@ -117,6 +130,11 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
 
 app.controller('departingController',['$http','$scope','$timeout','$window','$routeParams', function($http,$scope,$timeout,$window,wsfTerminalService,wsfScheduleService,$routeParams) {
     $scope.viewClass = 'departing';
+    $scope.$watch("terminalApi",function(newData,oldData){
+        $scope.setTitle("WSF Schedule");
+    });
+
+
     $timeout(function(){
         $window.scrollTo(0,0)
     },100);
@@ -125,6 +143,10 @@ app.controller('arrivingController',['$scope', '$routeParams', '$location', '$re
     //console.log("routeParams: ",$routeParams)
     $scope.viewClass = 'arriving';
     $scope.departingId = $routeParams.departingId;
+    $scope.$watch("terminalApi",function(newData,oldData){
+        $scope.setTitle($scope.getTerminalNameFromId($scope.departingId))
+    });
+
     wsfScheduleService.getTerminalsMates($scope.departingId).then(function(response){
         $scope.Mates =  response.data;
         //console.log("terminal mates for: ",$scope.departingId," :",$scope.Mates );
@@ -138,14 +160,19 @@ app.controller('arrivingController',['$scope', '$routeParams', '$location', '$re
     },100);
 
 }]);
-app.controller('timesController',['$scope', '$routeParams', '$location', '$resource','wsfScheduleService','$timeout','$window', function($scope, $routeParams, $location, $resource,wsfScheduleService,$timeout,$window) {
+app.controller('timesController',['$scope', '$routeParams', '$location', '$resource','wsfScheduleService','$timeout','$window','$anchorScroll','$document', function($scope, $routeParams, $location, $resource,wsfScheduleService,$timeout,$window,$anchorScroll,$document) {
     //console.log("routeParams: ",$routeParams)
     $scope.viewClass = 'times';
     $scope.departingId = $routeParams.departingId;
     $scope.arrivingId = $routeParams.arrivingId;
+    $scope.$watch("terminalApi",function(newData,oldData){
+        $scope.setTitle($scope.getTerminalNameFromId($scope.departingId)+" - " + $scope.getTerminalNameFromId($scope.arrivingId));
+    });
+
     $scope.timesApi = {};
     $scope.validDateRangeApi = {};
     $scope.nextTimeFound = false;
+
     $scope.isBoatGone = function(time){
         $scope.beforeTime  = moment(time).unix().valueOf() < moment().unix().valueOf()?true:false;
         if($scope.beforeTime){
@@ -171,26 +198,32 @@ app.controller('timesController',['$scope', '$routeParams', '$location', '$resou
     }
 
     $scope.$watch("timesApi",function(newData,oldData){
+
         if(newData != oldData){
             $scope.Schedule =  newData;
             $scope.Times =  newData.TerminalCombos[0].Times;
 
             $timeout(function(){
+                $(".boat-gone").eq(-3).attr("id","scrollto")
+
                 if($(".times-list")) {
                     $('.boat-available').first().addClass('active')
-                    $('body').css({
-                        'margin-bottom': $(window).height() + "px"
-                    });
                 }
                 if($(".boat-gone")) {
-                    $('html, body').animate({
-                        scrollTop: $(".boat-gone").last().offset().top
-                    }, 500);
+                    $('html,body').animate({
+                        scrollTop: $scope.nextBoatOffset
+                    }, 200);
                 }
+
+
+                //var someElement = angular.element(document.getElementById('scrollto'));
+                //$document.scrollToElement(someElement, 20, 300);
+                //angular.element("body").scrollTo("scrollto",500);
+                $anchorScroll("scrollto")
                 //$(".active-nav [role=right-nav]").css({
                 //    height:$(".active-nav [role=main]").height()
                 //})
-            },100);
+            },0);
 
         }
 

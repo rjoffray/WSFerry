@@ -3,7 +3,7 @@
  */
     moment.tz.setDefault("America/Los_Angeles");
 
-    var app = angular.module('wsfApplication', ['ngRoute','ngResource','ngAnimate','ngTouch']);
+    var app = angular.module('wsfApplication', ['ngRoute','ngResource','ngAnimate','ngTouch','duScroll']);
 
     app.config(['$routeProvider',
             function($routeProvider) {
