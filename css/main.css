@@ -1,7 +1,100 @@
+/* ANIMATIONS
+============================================================================= */
+/* leaving animations ----------------------------------------- */
+/* rotate and fall */
+@keyframes rotateFall {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  20% {
+    transform: rotateZ(10deg);
+    animation-timing-function: ease-out;
+  }
+  40% {
+    transform: rotateZ(17deg);
+  }
+  60% {
+    transform: rotateZ(16deg);
+  }
+  100% {
+    transform: translateY(100%) rotateZ(17deg);
+  }
+}
+/* slide in from the bottom */
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+/* rotate out newspaper */
+@keyframes rotateOutNewspaper {
+  to {
+    transform: translateZ(-3000px) rotateZ(360deg);
+    opacity: 0;
+  }
+}
+/* entering animations --------------------------------------- */
+/* scale up */
+@keyframes scaleUp {
+  from {
+    opacity: 0.3;
+    -webkit-transform: scale(0.8);
+  }
+}
+/* slide in from the right */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+/* slide in from the right */
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+/* slide in from the bottom */
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+/* slide in from the bottom */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 body,
 html {
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
 }
 [role="left-nav"],
 [role="main"],
@@ -20,18 +113,22 @@ html {
 }
 [role="main"] {
   margin-left: 0;
-  float: left;
+  float: right;
   z-index: 9;
 }
 [role="right-nav"] {
   margin-right: -200%;
+  top: 0;
   float: right;
   min-height: 100%;
   z-index: 1000;
-  background-color: lightgray;
+  background-color: white;
 }
 [role="right-nav"] .fa {
   font-size: 24px!important;
+}
+.active-nav {
+  overflow: hidden;
 }
 .active-nav [role="left-nav"] {
   margin-left: 0;
@@ -56,13 +153,28 @@ html {
   float: right;
   width: 80%;
 }
+.view {
+  width: 100%;
+}
+.view.slide.ng-leave {
+  animation: fadeOut 0.5s both ease-in;
+  z-index: 8888;
+}
+.view.slide {
+  animation: fadeIn 0.25s both ease-in;
+  z-index: 9999;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .view .list-group .list-group-item {
   border-radius: 0;
 }
-.view .list-group .list-group-item .fa-bars {
+.view .list-group .list-group-item .fa {
   font-size: 24px!important;
 }
-.view .list-group .list-group-item.navbar-heading {
+.view .list-group .list-group-item.navbar-header,
+.view .list-group .list-group-item.navbar-footer {
   font-weight: 600;
   text-align: center;
   color: white;
@@ -70,14 +182,26 @@ html {
   border-color: darkslategray;
   padding: .5rem 1rem .6rem 1.25rem;
 }
-.view .list-group .list-group-item.navbar-heading .back-button {
+.view .list-group .list-group-item.navbar-header .breadcrumb-text,
+.view .list-group .list-group-item.navbar-footer .breadcrumb-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* height: 6em; */
+  font-size: 14px;
+  line-height: 24px;
+  vertical-align: top;
+}
+.view .list-group .list-group-item.navbar-header .back-button,
+.view .list-group .list-group-item.navbar-footer .back-button {
   position: relative;
   float: left;
   background-color: lightgray;
   color: darkslategray;
   padding: 1px 6px 1px 16px;
 }
-.view .list-group .list-group-item.navbar-heading .back-button::before {
+.view .list-group .list-group-item.navbar-header .back-button::before,
+.view .list-group .list-group-item.navbar-footer .back-button::before {
   position: absolute;
   top: 0;
   left: 0;

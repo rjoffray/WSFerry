@@ -1,9 +1,10 @@
 <ul class="list-unstyled list-group">
-    <li class="list-group-item navbar-heading"><span class="pull-right fa fa-bars" ng-click="$parent.menuOpen = !$parent.menuOpen"></span>WSF Schedule</li>
+    <li class="list-group-item navbar-header"><span class="pull-right fa fa-bars" ng-click="$parent.menuOpen = !$parent.menuOpen"></span>WSF Schedule</li>
     <li class="list-group-item list-heading">departing terminals</li>
     <li class="list-group-item" ng-repeat="t in Terminals" ng-click="goArriving(t.TerminalID)">
         <span class="fa fa-angle-right pull-right"></span>
         {{t.TerminalName}}
     </li>
     <li class="list-group-item list-footer">departing terminals</li>
+
 </ul>

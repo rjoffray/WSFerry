@@ -31,6 +31,20 @@
             return $sce.trustAsHtml(val);
         };
     });
+    app.animation('.slide', ['$animateCss', function($animateCss) {
+        return {
+            enter: function(element, doneFn) {
+                //setup animation
+                var animation = $animateCss(element, {
+                    event: 'enter'
+                });
+                //trigger animation
+                animation.start();
+                //setup done callback
+                animation.done(doneFn);
+            }
+        }
+    }])
 
 _.mixin({
     'findByValues': function(collection, property, values) {

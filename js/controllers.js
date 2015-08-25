@@ -21,6 +21,12 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
         },0);
 
     }
+    $scope.goBack = function(){
+        $timeout(function(){
+            $window.history.back();
+            console.log("back")
+        },0);
+    }
     $scope.goToUrl = function(url){
         $location.path(url);
         $scope.menuOpen = false;
@@ -153,16 +159,19 @@ app.controller('timesController',['$scope', '$routeParams', '$location', '$resou
             $timeout(function(){
                 if($(".times-list")) {
                     $('.boat-available').first().addClass('active')
-                    $('body').css({
-                        'margin-bottom': $(window).height() + "px"
-                    });
+                    //$('body').css({
+                    //    'margin-bottom': $(window).height() + "px"
+                    //});
                 }
                 if($(".boat-gone")) {
-                    $('html, body').animate({
-                        scrollTop: $(".boat-gone").last().offset().top
-                    }, 500);
+                    //$('html, body').animate({
+                    //    scrollTop: $(".boat-gone").last().offset().top
+                    //}, 500);
                 }
-            },0);
+                //$(".active-nav [role=right-nav]").css({
+                //    height:$(".active-nav [role=main]").height()
+                //})
+            },200);
 
         }
 
