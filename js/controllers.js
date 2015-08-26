@@ -210,6 +210,11 @@ app.controller('timesController',['$scope', '$routeParams', '$location', '$resou
                 $(".boat-gone").eq(-3).attr("id","scrollto")
 
                 if($(".times-list")) {
+                    if($('.boat-available').length > 1){
+                        $('.boat-available').first().addClass('active')
+                    }else{
+                        $('.boat-available').addClass('active')
+                    }
                     $('.boat-available').first().addClass('active')
                 }
                 if($(".boat-gone")) {
@@ -219,7 +224,7 @@ app.controller('timesController',['$scope', '$routeParams', '$location', '$resou
                 }
                 $anchorScroll("scrollto")
 
-            },0);
+            },500);
 
         }
 
