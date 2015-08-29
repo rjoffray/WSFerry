@@ -148,7 +148,8 @@ body.active-nav [role="right-nav"] {
   padding-top: 74px;
   padding-bottom: 74px;
   background-color: #ffffff;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
 .view.times .list-group {
