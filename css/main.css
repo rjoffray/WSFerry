@@ -21,7 +21,7 @@ html {
   overflow-y: auto;
   overflow-x: hidden;
   margin: 0;
-  background-color: #027558;
+  background-color: #ffffff;
   -webkit-overflow-scrolling: touch;
 }
 body.active-nav .bottom-filler {
@@ -63,8 +63,8 @@ body.active-nav [role="right-nav"] {
   text-align: center;
   border-radius: 0;
   color: white;
-  background-color: #027558;
-  border-color: #027558;
+  background-color: #6699cc;
+  border-color: #6699cc;
   padding: .5rem 1rem .6rem 1.25rem;
 }
 [role="main"] .navbar-header .fa,
@@ -86,7 +86,7 @@ body.active-nav [role="right-nav"] {
   position: relative;
   float: left;
   background-color: lightgray;
-  color: #027558;
+  color: #6699cc;
   padding: 1px 6px 1px 16px;
 }
 [role="main"] .navbar-header .back-button::before,
@@ -100,7 +100,7 @@ body.active-nav [role="right-nav"] {
   height: 26px;
   border-width: 13px 10px 13px 0;
   border-style: solid;
-  border-color: #027558;
+  border-color: #6699cc;
   border-right-color: lightgray;
 }
 [role="main"] .navbar-footer {
