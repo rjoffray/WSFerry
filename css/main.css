@@ -21,6 +21,7 @@ html {
   overflow-y: auto;
   overflow-x: hidden;
   margin: 0;
+  background-color: #027558;
   -webkit-overflow-scrolling: touch;
 }
 body.active-nav .bottom-filler {
@@ -62,8 +63,8 @@ body.active-nav [role="right-nav"] {
   text-align: center;
   border-radius: 0;
   color: white;
-  background-color: darkslategray;
-  border-color: darkslategray;
+  background-color: #027558;
+  border-color: #027558;
   padding: .5rem 1rem .6rem 1.25rem;
 }
 [role="main"] .navbar-header .fa,
@@ -85,7 +86,7 @@ body.active-nav [role="right-nav"] {
   position: relative;
   float: left;
   background-color: lightgray;
-  color: darkslategray;
+  color: #027558;
   padding: 1px 6px 1px 16px;
 }
 [role="main"] .navbar-header .back-button::before,
@@ -99,7 +100,7 @@ body.active-nav [role="right-nav"] {
   height: 26px;
   border-width: 13px 10px 13px 0;
   border-style: solid;
-  border-color: darkslategray;
+  border-color: #027558;
   border-right-color: lightgray;
 }
 [role="main"] .navbar-footer {
@@ -146,8 +147,9 @@ body.active-nav [role="right-nav"] {
 }
 .view {
   width: 100%;
-  padding-top: 44px;
-  padding-bottom: 44px;
+  padding-top: 74px;
+  padding-bottom: 74px;
+  background-color: #ffffff;
 }
 .view.times .list-group {
   margin-top: 44px;
@@ -186,11 +188,20 @@ body.active-nav [role="right-nav"] {
 }
 .view .list-group .list-group-item.list-heading,
 .view .list-group .list-group-item.list-footer {
-  background-color: aliceblue;
+  position: fixed;
+  z-index: 10000;
+  top: 44px;
+  left: 0;
+  right: 0;
+  background-color: rgba(240, 248, 255, 0.7);
   color: darkgray;
   height: 30px;
   padding: .1rem 1rem .3rem 1rem;
   text-align: center;
+}
+.view .list-group .list-group-item.list-footer {
+  top: auto;
+  bottom: 44px;
 }
 .view .list-group .list-group-item .am-color {
   color: orange;

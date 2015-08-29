@@ -1,4 +1,5 @@
-
+@main-color:#027558;
+@white:#ffffff;
 @keyframes fadeIn {
   from    { opacity:0; }
   to      { opacity:1; }
@@ -13,6 +14,7 @@ body,html{
   overflow-y:auto;
   overflow-x: hidden;
   margin:0;
+  background-color: @main-color;
   -webkit-overflow-scrolling: touch;
 }
 body.active-nav{
@@ -57,8 +59,8 @@ body.active-nav{
 	text-align: center;
 	border-radius: 0;
 	color: white;
-	background-color: darkslategray;
-	border-color: darkslategray;
+	background-color: @main-color;
+	border-color: @main-color;
 	padding: .5rem 1rem .6rem 1.25rem;
 	.fa{
 	  font-size:24px!important;
@@ -76,7 +78,7 @@ body.active-nav{
 	  position: relative;
 	  float: left;
 	  background-color: lightgray;
-	  color: darkslategray;
+	  color: @main-color;
 	  padding: 1px 6px 1px 16px;
 	  &::before {
 		position: absolute;
@@ -88,7 +90,7 @@ body.active-nav{
 		height: 26px;
 		border-width: 13px 10px 13px 0;
 		border-style: solid;
-		border-color: darkslategray;
+		border-color: @main-color;
 		border-right-color: lightgray;
 
 	  }
@@ -148,8 +150,9 @@ body.active-nav{
 
 .view {
   width:100%;
-  padding-top: 44px;
-  padding-bottom: 44px;
+  padding-top: 74px;
+  padding-bottom: 74px;
+  background-color: @white;
   &.times{
 	.list-group {
 	  margin-top: 44px;
@@ -182,12 +185,21 @@ body.active-nav{
 	  }
 	  &.list-heading,
 	  &.list-footer{
-		background-color: aliceblue;
+		position:fixed;
+		z-index:10000;
+		top:44px;
+		left:0;
+		right:0;
+		background-color:rgba(240, 248, 255,.7);
 		color:darkgray;
 		height:30px;
 		padding: .1rem 1rem .3rem 1rem;
 		text-align: center;
 
+	  }
+	  &.list-footer {
+	  	top:auto;
+		bottom:44px;
 	  }
 	  .am-color {
 		color: orange;
