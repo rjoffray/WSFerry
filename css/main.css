@@ -18,7 +18,8 @@ body,
 html {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
   margin: 0;
   background-color: #ffffff;
 }
@@ -148,8 +149,7 @@ body.active-nav [role="right-nav"] {
   padding-top: 74px;
   padding-bottom: 74px;
   background-color: #ffffff;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
 .view.times .list-group {
