@@ -54,6 +54,10 @@ body.active-nav [role="right-nav"] {
 [role="main"] .navbar-header,
 [role="main"] .navbar-footer {
   position: fixed;
+  -webkit-transform: translateZ(1px);
+  -moz-transform: translateZ(1px);
+  -o-transform: translateZ(1px);
+  transform: translateZ(1px);
   z-index: 10000;
   top: 0;
   right: 0;
@@ -105,6 +109,10 @@ body.active-nav [role="right-nav"] {
 }
 [role="main"] .navbar-footer {
   position: fixed;
+  -webkit-transform: translateZ(1px);
+  -moz-transform: translateZ(1px);
+  -o-transform: translateZ(1px);
+  transform: translateZ(1px);
   z-index: 10000;
   top: auto;
   bottom: 0;
@@ -168,6 +176,10 @@ body.active-nav [role="right-nav"] {
 .view .button-group {
   background-color: rgba(240, 248, 255, 0.7);
   position: fixed;
+  -webkit-transform: translateZ(1px);
+  -moz-transform: translateZ(1px);
+  -o-transform: translateZ(1px);
+  transform: translateZ(1px);
   text-align: center;
   margin-top: 0;
   z-index: 10000;
@@ -189,6 +201,10 @@ body.active-nav [role="right-nav"] {
 .view .list-group .list-group-item.list-heading,
 .view .list-group .list-group-item.list-footer {
   position: fixed;
+  -webkit-transform: translateZ(1px);
+  -moz-transform: translateZ(1px);
+  -o-transform: translateZ(1px);
+  transform: translateZ(1px);
   z-index: 10000;
   top: 44px;
   left: 0;
