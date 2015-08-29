@@ -18,6 +18,7 @@ body,
 html {
   width: 100%;
   height: 100%;
+  overflow-y: auto;
   overflow-x: hidden;
   margin: 0;
   -webkit-overflow-scrolling: touch;
@@ -145,8 +146,8 @@ body.active-nav [role="right-nav"] {
 }
 .view {
   width: 100%;
-  margin-top: 44px;
-  margin-bottom: 44px;
+  padding-top: 44px;
+  padding-bottom: 44px;
 }
 .view.times .list-group {
   margin-top: 44px;
