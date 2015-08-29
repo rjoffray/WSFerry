@@ -15,7 +15,7 @@ body,html{
   overflow-x: hidden;
   margin:0;
   background-color: @white;
-  -webkit-overflow-scrolling: touch;
+  overflow:hidden;
 }
 body.active-nav{
   .bottom-filler{
@@ -49,8 +49,8 @@ body.active-nav{
   z-index:9;
 
   .navbar-header,.navbar-footer {
-	position:fixed;
-	z-index:10000;
+	position:absolute;
+	z-index:949;
 	top:0;
 	right:0;
 	left:0;
@@ -153,13 +153,16 @@ body.active-nav{
   padding-top: 74px;
   padding-bottom: 74px;
   background-color: @white;
+  overflow-y:auto;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling: touch;
   &.times{
 	.list-group {
 	  margin-top: 44px;
 	}
   }
-  &.slide.ng-leave           { animation: fadeOut 0.5s both ease-in; z-index: 8888; }
-  &.slide          { animation: fadeIn 0.25s both ease-in; z-index: 9999;position:absolute;top:0;left:0 }
+  &.slide.ng-leave           { animation: fadeOut 0.5s both ease-in; z-index: 947; }
+  &.slide          { animation: fadeIn 0.25s both ease-in; z-index: 948;position:absolute;top:0;left:0 }
   .button-group{
 	background-color:rgba(240, 248, 255,.7);
 	position:fixed;

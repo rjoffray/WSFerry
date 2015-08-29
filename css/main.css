@@ -22,7 +22,7 @@ html {
   overflow-x: hidden;
   margin: 0;
   background-color: #ffffff;
-  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
 }
 body.active-nav .bottom-filler {
   height: 0;
@@ -53,8 +53,8 @@ body.active-nav [role="right-nav"] {
 }
 [role="main"] .navbar-header,
 [role="main"] .navbar-footer {
-  position: fixed;
-  z-index: 10000;
+  position: absolute;
+  z-index: 949;
   top: 0;
   right: 0;
   left: 0;
@@ -150,17 +150,20 @@ body.active-nav [role="right-nav"] {
   padding-top: 74px;
   padding-bottom: 74px;
   background-color: #ffffff;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 .view.times .list-group {
   margin-top: 44px;
 }
 .view.slide.ng-leave {
   animation: fadeOut 0.5s both ease-in;
-  z-index: 8888;
+  z-index: 947;
 }
 .view.slide {
   animation: fadeIn 0.25s both ease-in;
-  z-index: 9999;
+  z-index: 948;
   position: absolute;
   top: 0;
   left: 0;

@@ -34,12 +34,15 @@
     app.animation('.slide', ['$animateCss', function($animateCss) {
         return {
             enter: function(element, doneFn) {
+                element.height($(window).height()-148)
                 //setup animation
                 var animation = $animateCss(element, {
                     event: 'enter'
                 });
                 //trigger animation
                 animation.start();
+                //alert($(window).height())
+               //element.height($(window).height())
                 //setup done callback
                 //animation.done(doneFn);
             }
@@ -69,4 +72,6 @@ _.mixin({
         });
     }
 });
+
+
 
