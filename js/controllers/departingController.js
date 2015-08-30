@@ -7,8 +7,6 @@ app.controller('departingController',['$http','$scope','$timeout','$window','ter
         $scope.setListHeader(true,"departing terminals")
         $scope.setSubNav(false)
     });
-
-
     $timeout(function(){
         $window.scrollTo(0,0)
     },100);

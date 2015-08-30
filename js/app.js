@@ -34,10 +34,15 @@
     app.animation('.slide', ['$animateCss', function($animateCss) {
         return {
             enter: function(element, doneFn) {
-                element.height($(window).height()-120);
+
+                element.height($(window).height()-73);
+                $("[role='right-nav']").height($(window).height())
+                //alert($(window).height())
 
                 window.addEventListener("orientationchange", function() {
-                    element.height($(window).height()-120);
+
+                    element.height($(window).height()-73);
+                    $("[role='right-nav']").height($(window).height())
                 }, false);
 
                 //setup animation

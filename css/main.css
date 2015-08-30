@@ -80,11 +80,9 @@ html {
   margin: 0 auto;
 }
 [role="main"] .view {
+  box-sizing: border-box;
   position: relative;
-  top: 44px;
-  left: 0;
-  right: 0;
-  bottom: 44px;
+  padding-top: 44px;
   z-index: 941;
   background-color: #ffffff;
   overflow-y: auto;
@@ -92,7 +90,7 @@ html {
   -webkit-overflow-scrolling: touch;
 }
 [role="main"] .view.with-list-head {
-  padding-top: 29px;
+  padding-top: 73px;
 }
 [role="main"] .view.with-list-head.with-button-nav {
   padding-top: 76px;

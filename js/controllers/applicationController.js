@@ -1,11 +1,5 @@
 app.controller('applicationController',['$rootScope','$http','$scope','$timeout','$window','terminalService','scheduleService','$location','$routeParams','$anchorScroll', function($rootScope,$http,$scope,$timeout,$window,terminalService,scheduleService,$location,$routeParams,$anchorScroll) {
-    //$timeout(function(){
-    //    $(".view").css({
-    //        height:$(window).height()+"px"
-    //    })
-    //
-    //},20)
-    //alert($(window).height())
+
     $rootScope.$on("$locationChangeStart",function(event,current,previous){
         //alert("change start")
     });

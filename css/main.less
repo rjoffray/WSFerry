@@ -77,18 +77,16 @@ body,html{
 	}
   }
   .view {
+	box-sizing: border-box;
 	position:relative;
-	top:44px;
-	left:0;
-	right:0;
-	bottom:44px;
+	padding-top:44px;
 	z-index:941;
 	background-color: @white;
 	overflow-y:auto;
 	overflow-x:hidden;
 	-webkit-overflow-scrolling: touch;
 	&.with-list-head{
-	  padding-top:29px;
+	  padding-top:29px + 44px;
 	}
 	&.with-list-head.with-button-nav{
 	  padding-top:76px;
