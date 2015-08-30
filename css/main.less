@@ -98,7 +98,18 @@ body > div { -webkit-transition: all 1s ease-in-out; }
 	  position:relative;
 	  .list-group-item {
 		border-radius: 0;
+		&:hover{
+		  background-color: lightgray;
+		  color:#000!important;
+		  &.boat-gone {
+			color: black;
+			.pm-color,
+			.am-color {
+			  color: black;
+			}
 
+		  }
+		}
 		.fa{
 		  font-size:24px!important;
 		}
@@ -115,6 +126,7 @@ body > div { -webkit-transition: all 1s ease-in-out; }
 		  .am-color {
 			color: lightgray;
 		  }
+
 		}
 		&.active {
 		  background-color: lightblue;

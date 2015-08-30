@@ -110,6 +110,17 @@ body > div {
 [role="main"] .view .list-group .list-group-item {
   border-radius: 0;
 }
+[role="main"] .view .list-group .list-group-item:hover {
+  background-color: lightgray;
+  color: #000!important;
+}
+[role="main"] .view .list-group .list-group-item:hover.boat-gone {
+  color: black;
+}
+[role="main"] .view .list-group .list-group-item:hover.boat-gone .pm-color,
+[role="main"] .view .list-group .list-group-item:hover.boat-gone .am-color {
+  color: black;
+}
 [role="main"] .view .list-group .list-group-item .fa {
   font-size: 24px!important;
 }
