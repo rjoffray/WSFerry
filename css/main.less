@@ -200,15 +200,15 @@ body > div { -webkit-transition: all 1s ease-in-out; }
 
 }
 [role="right-nav"] {
-  left:200%;
-  top:0;
+  position:absolute;
+  right:-100%;
   z-index:1000;
   background-color:white;
   .fa{
 	font-size:24px!important;
   }
   .active-nav &{
-	left:20%;
+	right:0%;
 	width:80%;
   }
 }
