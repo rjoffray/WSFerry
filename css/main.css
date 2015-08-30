@@ -93,9 +93,6 @@ body > div {
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
-[role="main"] .view.times .list-group-item {
-  pointer-events: none;
-}
 [role="main"] .view.with-list-head {
   padding-top: 73px;
 }
