@@ -1,11 +1,15 @@
 app.controller('applicationController',['$rootScope','$http','$scope','$timeout','$window','terminalService','scheduleService','$location','$routeParams','$anchorScroll', function($rootScope,$http,$scope,$timeout,$window,terminalService,scheduleService,$location,$routeParams,$anchorScroll) {
 
-    $rootScope.$on("$locationChangeStart",function(event,current,previous){
+    $rootScope.$on("$locationChangeEnd",function(event,current,previous){
         //alert("change start")
+
     });
     //$(window).$on.('resize',function(){
     //    var windowHeight
     //})
+    $timeout(function(){
+        $("[role=right-nav]").hide();
+    },500);
     $scope.menuOpen = false;
     $scope.menuTitle = "";
     $scope.showListHeader = false;
