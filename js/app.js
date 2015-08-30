@@ -34,14 +34,18 @@
     app.animation('.slide', ['$animateCss', function($animateCss) {
         return {
             enter: function(element, doneFn) {
-
-                element.height($(window).height()-73);
+                var offset=0;
+                if(element.hasClass('with-list-head')){
+                    offset=30;
+                }
+                if(element.hasClass('with-list-head') && element.hasClass('with-button-nav')){
+                    offset=77
+                }
+                element.height($(window).height()-(44+offset));
                 $("[role='right-nav']").height($(window).height())
-                //alert($(window).height())
 
                 window.addEventListener("orientationchange", function() {
-
-                    element.height($(window).height()-73);
+                    element.height($(window).height()-(44+offset));
                     $("[role='right-nav']").height($(window).height())
                 }, false);
 

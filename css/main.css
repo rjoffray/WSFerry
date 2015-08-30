@@ -92,7 +92,7 @@ body {
   padding-top: 73px;
 }
 [role="main"] .view.with-list-head.with-button-nav {
-  padding-top: 76px;
+  padding-top: 121px;
 }
 [role="main"] .view.slide.ng-leave {
   animation: fadeOut 0.5s both ease-in;
