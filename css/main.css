@@ -226,6 +226,10 @@ body > div {
   right: 0%;
   width: 80%;
 }
+[role="right-nav"] .list-group-item:active {
+  background-color: lightgray;
+  color: black;
+}
 .active-nav {
   overflow: hidden;
 }
