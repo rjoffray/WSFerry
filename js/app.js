@@ -34,7 +34,12 @@
     app.animation('.slide', ['$animateCss', function($animateCss) {
         return {
             enter: function(element, doneFn) {
-                element.height($(window).height()-148)
+                element.height($(window).height()-120);
+                $(window).on("orientationchange",function(){
+                    element.height($(window).height()-120);
+                    alert($(window).orientation)
+                })
+
                 //setup animation
                 var animation = $animateCss(element, {
                     event: 'enter'
@@ -48,7 +53,9 @@
             }
         }
     }])
-
+$(window).on("orientationchange",function(){
+    alert("The orientation has changed!");
+});
 _.mixin({
     'findByValues': function(collection, property, values) {
         return _.filter(collection, function(item) {

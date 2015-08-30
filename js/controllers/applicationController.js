@@ -9,7 +9,9 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
     $rootScope.$on("$locationChangeStart",function(event,current,previous){
         //alert("change start")
     });
-
+    //$(window).$on.('resize',function(){
+    //    var windowHeight
+    //})
     $scope.menuOpen = false;
     $scope.menuTitle = "";
     $scope.showListHeader = false;
