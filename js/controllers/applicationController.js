@@ -55,7 +55,8 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
     $scope.openNav = function(){
         $anchorScroll("scrolltop")
         $timeout(function(){
-            $scope.menuOpen = true
+            $scope.menuOpen = true;
+            $("[role=right-nav]").show();
             $('body').addClass("nav-open");
         },0);
 
@@ -64,7 +65,14 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
         $anchorScroll("scrollto")
         $timeout(function(){
             $scope.menuOpen = false;
+
             $('body').removeClass("nav-open");
+            $('body').one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend",
+                function(event) {
+                    // Do something when the transition ends
+                    $("[role=right-nav]").hide();
+
+                });
         },0);
 
     }
