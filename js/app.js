@@ -37,8 +37,6 @@
                 element.height($(window).height()-120);
 
                 window.addEventListener("orientationchange", function() {
-                    // Announce the new orientation number
-                    alert(window.orientation);
                     element.height($(window).height()-120);
                 }, false);
 
