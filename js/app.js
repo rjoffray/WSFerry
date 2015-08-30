@@ -35,10 +35,12 @@
         return {
             enter: function(element, doneFn) {
                 element.height($(window).height()-120);
-                $(window).on("orientationchange",function(){
+
+                window.addEventListener("orientationchange", function() {
+                    // Announce the new orientation number
+                    alert(window.orientation);
                     element.height($(window).height()-120);
-                    alert($(window).orientation)
-                })
+                }, false);
 
                 //setup animation
                 var animation = $animateCss(element, {
@@ -53,9 +55,7 @@
             }
         }
     }])
-$(window).on("orientationchange",function(){
-    alert("The orientation has changed!");
-});
+
 _.mixin({
     'findByValues': function(collection, property, values) {
         return _.filter(collection, function(item) {
