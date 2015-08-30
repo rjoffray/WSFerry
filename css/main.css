@@ -111,15 +111,15 @@ body > div {
 [role="main"] .view .list-group .list-group-item {
   border-radius: 0;
 }
-[role="main"] .view .list-group .list-group-item:hover {
+[role="main"] .view .list-group .list-group-item:active {
   background-color: lightgray;
   color: #000!important;
 }
-[role="main"] .view .list-group .list-group-item:hover.boat-gone {
+[role="main"] .view .list-group .list-group-item:active.boat-gone {
   color: black;
 }
-[role="main"] .view .list-group .list-group-item:hover.boat-gone .pm-color,
-[role="main"] .view .list-group .list-group-item:hover.boat-gone .am-color {
+[role="main"] .view .list-group .list-group-item:active.boat-gone .pm-color,
+[role="main"] .view .list-group .list-group-item:active.boat-gone .am-color {
   color: black;
 }
 [role="main"] .view .list-group .list-group-item .fa {
