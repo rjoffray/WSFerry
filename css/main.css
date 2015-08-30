@@ -115,7 +115,7 @@ body > div {
   border-radius: 0;
 }
 [role="main"] .view .list-group .list-group-item:active {
-  background-color: lightgray;
+  background-color: lightgrey;
   color: #000!important;
 }
 [role="main"] .view .list-group .list-group-item:active.boat-gone {
@@ -124,6 +124,10 @@ body > div {
 [role="main"] .view .list-group .list-group-item:active.boat-gone .pm-color,
 [role="main"] .view .list-group .list-group-item:active.boat-gone .am-color {
   color: black;
+}
+[role="main"] .view .list-group .list-group-item:link {
+  background-color: medium;
+  color: #000!important;
 }
 .times [role="main"] .view .list-group .list-group-item:active {
   background-color: #ffffff;
