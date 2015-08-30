@@ -12,8 +12,40 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
 
     $scope.menuOpen = false;
     $scope.menuTitle = "";
+    $scope.showListHeader = false;
+    $scope.listHeaderMessage = "";
+    $scope.showSubNav = false;
     $scope.setTitle= function(title){
         $scope.menuTitle = title;
+
+    }
+    $scope.setListHeader= function(show,title){
+        $scope.showListHeader = show;
+        $scope.listHeaderMessage = title;
+        if (show) {
+            $(".view").addClass("with-list-head");
+        }else{
+            $(".view").removeClass("with-list-head");
+        }
+
+
+    }
+    $scope.setSubNav= function(show) {
+        $scope.showSubNav = show;
+        if (show) {
+            $(".view").addClass("with-button-nav");
+        }else{
+            $(".view").removeClass("with-button-nav");
+        }
+
+
+
+    }
+    $scope.reverseSchedule = function(){
+        //console.log();
+        var pathArray = $location.path().split("/");
+        console.log(pathArray)
+        $location.path(pathArray[1]+"/"+pathArray[3]+"/"+pathArray[2])
     }
     angular.element(".offcanvas").on("click",function(event){
         var _self=this;

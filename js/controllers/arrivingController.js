@@ -4,6 +4,8 @@ app.controller('arrivingController',['$scope', '$routeParams', '$location', '$re
     $scope.departingId = $routeParams.departingId;
     $scope.$watch("terminalApi",function(newData,oldData){
         $scope.setTitle($scope.getTerminalNameFromId($scope.departingId))
+        $scope.setListHeader(true,"arriving terminals");
+        $scope.setSubNav(false);
     });
 
     scheduleService.getTerminalsMates($scope.departingId).then(function(response){

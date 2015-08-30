@@ -5,6 +5,8 @@ app.controller('timesController',['$scope', '$routeParams', '$location', '$resou
     $scope.arrivingId = $routeParams.arrivingId;
     $scope.$watch("terminalApi",function(newData,oldData){
         $scope.setTitle($scope.getTerminalNameFromId($scope.departingId)+" - " + $scope.getTerminalNameFromId($scope.arrivingId));
+        $scope.setListHeader(true,moment().format("dddd, MMMM DD, YYYY"));
+        $scope.setSubNav(true)
     });
 
     $scope.timesApi = {};
@@ -29,12 +31,7 @@ app.controller('timesController',['$scope', '$routeParams', '$location', '$resou
         //$scope.terminalApi =  error;
         console.log("Error: ",error);
     });
-    $scope.reverseSchedule = function(){
-        //console.log();
-        var pathArray = $location.path().split("/");
-        console.log(pathArray)
-        $location.path(pathArray[1]+"/"+pathArray[3]+"/"+pathArray[2])
-    }
+
 
     $scope.$watch("timesApi",function(newData,oldData){
 

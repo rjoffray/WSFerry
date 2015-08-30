@@ -71,10 +71,19 @@
 <div class="offcanvas">
     <div role="main">
         <div class="list-group-item navbar-header"><span class="pull-right fa fa-bars" ng-click="openNav()"></span>{{menuTitle}}</div>
+        <div class="list-group-item list-heading top-nav" ng-show="showListHeader">{{listHeaderMessage}}</div>
+        <div class="list-group-item list-heading top-nav button-group"  ng-show="showSubNav">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Buttons">
+                <button type="button" class="btn btn-secondary" ng-click="reverseSchedule()">reverse</button>
+                <button type="button" class="btn btn-secondary">cameras</button>
+                <button type="button" class="btn btn-secondary">fares</button>
+                <button type="button" class="btn btn-secondary">alerts</button>
+            </div>
+        </div>
         <div ng-view class="view {{viewClass}} slide">
 
         </div>
-
+        <div class="list-group-item list-footer" ng-show="showListFooter">{{listHeaderMessage}}</div>
         <div class="list-group-item navbar-footer"><span class="pull-left fa fa-info" ng-click="goInfo()"></span>&nbsp;</div>
 
     </div>

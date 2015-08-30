@@ -1,12 +1,6 @@
 <ul class="list-unstyled list-group">
-
-    <li class="list-group-item list-heading" ng-show="Mates.length"> arriving terminals</li>
     <li class="list-group-item" ng-repeat="t in Mates"  ng-click="goTimes(departingId,t.TerminalID)">
         <span class="fa fa-angle-right pull-right"></span>
         {{t.Description}}
     </li>
-    <li class="list-group-item list-footer" ng-show="Mates.length">arriving terminals</li>
-
-
-
 </ul>
