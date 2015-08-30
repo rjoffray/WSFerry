@@ -16,6 +16,10 @@
                         templateUrl: 'partials/arriving.html',
                         controller: 'arrivingController'
                     }).
+                    when('/times/:departingId/:arrivingId/:scheduleDate', {
+                        templateUrl: 'partials/times.html',
+                        controller: 'timesController'
+                    }).
                     when('/times/:departingId/:arrivingId', {
                         templateUrl: 'partials/times.html',
                         controller: 'timesController'

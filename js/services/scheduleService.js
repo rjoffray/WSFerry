@@ -102,7 +102,10 @@ app.service('scheduleService',function($http,$q) {
                 return promise;
             }
         },
-        getSchedule : function(DepartingTerminalID,ArrivingTerminalID){
+        getSchedule : function(DepartingTerminalID,ArrivingTerminalID,ScheduleDate){
+            if(ScheduleDate != null){
+                this.trip_date = ScheduleDate;
+            }
             var url = this.api_root + this.api_schedules + "/schedule/" + this.trip_date + "/" +DepartingTerminalID +"/" + ArrivingTerminalID +"?callback=JSON_CALLBACK&apiaccesscode=" + this.api_key;
             promise=null;
             if (promise) {

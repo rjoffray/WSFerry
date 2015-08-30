@@ -15,9 +15,13 @@
     <link rel="apple-touch-icon" href="images/WSFicon.png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/css/bootstrap-datepicker.css"/>
+
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js"></script>
+
     <script src="https://code.angularjs.org/1.4.4/angular.min.js"></script>
     <script src="https://code.angularjs.org/1.4.4/angular-resource.min.js"></script>
     <script src="https://code.angularjs.org/1.4.4/angular-route.min.js"></script>
@@ -72,14 +76,14 @@
 <div class="offcanvas">
     <div role="main">
         <div class="list-group-item navbar-header"><span class="pull-right fa fa-bars" ng-click="openNav()"></span>{{menuTitle}}</div>
-        <div class="list-group-item list-heading top-nav" ng-if="showListHeader">{{listHeaderMessage}}</div>
+        <div class="list-group-item list-heading top-nav" ng-if="showListHeader" ng-bind-html="listHeaderMessage | unsafe"></div>
+
         <div class="list-group-item list-heading top-nav button-group"  ng-if="showSubNav">
             <div class="btn-group btn-group-sm" role="group" aria-label="Buttons">
                 <button type="button" class="btn btn-secondary" ng-click="reverseSchedule()">reverse</button>
                 <button type="button" class="btn btn-secondary">cameras</button>
                 <button type="button" class="btn btn-secondary">fares</button>
                 <button type="button" class="btn btn-secondary">alerts</button>
-                <button type="button" class="btn btn-secondary">lookup</button>
             </div>
         </div>
         <div ng-view class="view {{viewClass}} slide">

@@ -217,6 +217,38 @@ body > div {
   top: auto;
   bottom: 0;
 }
+.datepicker {
+  border-width: 0;
+  text-align: center;
+  width: 65%;
+  background-color: transparent;
+}
+.datepicker table tr td {
+  padding: 3px 6px;
+}
+.datepicker table tr td.active.active {
+  background-color: #6699cc;
+  background-image: url('');
+  border-radius: 0;
+}
+.datepicker table tr td.day.disabled {
+  color: lightgray;
+}
+.datepicker:focus {
+  outline: 0;
+}
+.datepicker.datepicker-dropdown {
+  background-color: #ffffff;
+  border-width: 1px;
+  width: auto;
+}
+.datepicker.datepicker-dropdown.datepicker-orient-left:before {
+  left: 50%!important;
+}
+.datepicker.datepicker-dropdown.datepicker-orient-left:after {
+  left: 50%!important;
+  margin-left: 1px;
+}
 [role="right-nav"] {
   position: absolute;
   right: -100%;

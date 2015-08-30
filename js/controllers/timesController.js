@@ -3,9 +3,12 @@ app.controller('timesController',['$scope', '$routeParams', '$location', '$resou
     $scope.viewClass = 'times';
     $scope.departingId = $routeParams.departingId;
     $scope.arrivingId = $routeParams.arrivingId;
+    $scope.scheduleDate = $routeParams.scheduleDate || moment().format("YYYY-MM-DD");
     $scope.$watch("terminalApi",function(newData,oldData){
         $scope.setTitle($scope.getTerminalNameFromId($scope.departingId)+" - " + $scope.getTerminalNameFromId($scope.arrivingId));
-        $scope.setListHeader(true,moment().format("dddd, MMMM DD, YYYY"));
+        //$scope.setListHeader(true,moment().format("dddd, MMMM DD, YYYY"));
+        $scope.setListHeader(true,"<input class='datepicker input' ng-model='scheduleDate' type=text value='"+moment().format("dddd, MMM DD, YYYY")+"' readonly />");
+        $scope.setDatePicker();
         $scope.setSubNav(true)
     });
 
@@ -23,8 +26,10 @@ app.controller('timesController',['$scope', '$routeParams', '$location', '$resou
     $scope.isAmTime = function(time){
         return moment(time).format('a') == 'am';
     }
-
-    scheduleService.getSchedule($scope.departingId,$scope.arrivingId).then(function(response){
+    if($routeParams.scheduleDate != null ){
+        $scope.scheduleDate = $routeParams.scheduleDate  || moment().format("YYYY-MM-DD");
+    }
+    scheduleService.getSchedule($scope.departingId,$scope.arrivingId,$scope.scheduleDate).then(function(response){
         $scope.timesApi =  response.data;
         console.log("Schedule Response",response.data)
     },function(error){

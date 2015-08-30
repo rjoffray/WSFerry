@@ -27,9 +27,27 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
         }else{
             $(".view").removeClass("with-list-head");
         }
+    }
+    $scope.setDatePicker = function(){
+        $timeout(function(){
+            $('.datepicker').datepicker({
+                format:'DD, M dd, yyyy',
+                autoclose: true,
+                orientation:'auto',
+                startDate:moment().format("DD, M dd, yyyy")
+            })
+            $('.datepicker.input').on('changeDate', function(e){
+                    var url = "/times/"+$routeParams.departingId+"/"+$routeParams.arrivingId+"/"+moment(e.date).format("YYYY-MM-DD")
+                    //console.log("url: ", url)
+                $scope.goToUrl(url);
+                $scope.$apply();
 
+
+            });
+        },500)
 
     }
+
     $scope.setSubNav= function(show) {
         $scope.showSubNav = show;
         if (show) {
@@ -45,7 +63,12 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
         //console.log();
         var pathArray = $location.path().split("/");
         console.log(pathArray)
-        $location.path(pathArray[1]+"/"+pathArray[3]+"/"+pathArray[2])
+        if(pathArray[4]){
+            $location.path(pathArray[1]+"/"+pathArray[3]+"/"+pathArray[2]+"/"+pathArray[4])
+        }else{
+            $location.path(pathArray[1]+"/"+pathArray[3]+"/"+pathArray[2])
+        }
+        //$location.path(pathArray[1]+"/"+pathArray[3]+"/"+pathArray[2])
     }
     angular.element(".offcanvas").on("click",function(event){
         var _self=this;

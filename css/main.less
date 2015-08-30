@@ -218,7 +218,46 @@ body > div { -webkit-transition: all 1s ease-in-out; }
 
   }
 
+
 }
+.datepicker{
+  border-width:0;
+  text-align:center;
+  width:65%;
+  background-color:transparent;
+  table tr td{
+	padding:3px 6px;
+  }
+  table tr td.active.active{
+	background-color: @main-color;
+	background-image:url('');
+	border-radius: 0;
+
+  }
+  table tr td.day.disabled{
+	color:lightgray;
+  }
+  &:focus{
+	outline:0;
+  }
+  &.datepicker-dropdown{
+	background-color:@white;
+
+	border-width:1px;
+	width:auto;
+	&.datepicker-orient-left:before {
+	  left:50%!important;
+
+	}
+	&.datepicker-orient-left:after{
+	  left:50%!important;
+	  margin-left:1px;
+	}
+
+
+  }
+}
+
 [role="right-nav"] {
   position:absolute;
 
