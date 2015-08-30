@@ -99,14 +99,17 @@ body > div { -webkit-transition: all 1s ease-in-out; }
 	  position:relative;
 	  .list-group-item {
 		border-radius: 0;
+
 		&:active{
 		  background-color: lightgray;
 		  color:#000!important;
+
 		  &.boat-gone {
 			color: black;
 			.pm-color,
 			.am-color {
 			  color: black;
+			  pointer-events: none;
 			}
 
 		  }
@@ -123,6 +126,7 @@ body > div { -webkit-transition: all 1s ease-in-out; }
 		}
 		&.boat-gone {
 		  color: lightgray;
+		  pointer-events: none;
 		  .pm-color,
 		  .am-color {
 			color: lightgray;
@@ -139,6 +143,7 @@ body > div { -webkit-transition: all 1s ease-in-out; }
 		  text-align: right;
 		  line-height: 100%;
 		  vertical-align: middle;
+		  pointer-events: none;
 		}
 	  }
 	}

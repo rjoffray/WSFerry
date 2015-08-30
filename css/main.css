@@ -121,6 +121,7 @@ body > div {
 [role="main"] .view .list-group .list-group-item:active.boat-gone .pm-color,
 [role="main"] .view .list-group .list-group-item:active.boat-gone .am-color {
   color: black;
+  pointer-events: none;
 }
 [role="main"] .view .list-group .list-group-item .fa {
   font-size: 24px!important;
@@ -133,6 +134,7 @@ body > div {
 }
 [role="main"] .view .list-group .list-group-item.boat-gone {
   color: lightgray;
+  pointer-events: none;
 }
 [role="main"] .view .list-group .list-group-item.boat-gone .pm-color,
 [role="main"] .view .list-group .list-group-item.boat-gone .am-color {
@@ -148,6 +150,7 @@ body > div {
   text-align: right;
   line-height: 100%;
   vertical-align: middle;
+  pointer-events: none;
 }
 [role="main"] .navbar-header,
 [role="main"] .navbar-footer {
