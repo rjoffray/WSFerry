@@ -1,4 +1,13 @@
-app.controller('applicationController',['$rootScope','$http','$scope','$timeout','$window','terminalService','scheduleService','$location','$routeParams','$anchorScroll', function($rootScope,$http,$scope,$timeout,$window,terminalService,scheduleService,$location,$routeParams,$anchorScroll) {
+app.controller('applicationController',['$rootScope',
+                                        '$http',
+                                        '$scope',
+                                        '$timeout',
+                                        '$window',
+                                        'terminalService',
+                                        'scheduleService',
+                                        '$location',
+                                        '$routeParams',
+                                        '$anchorScroll', function($rootScope,$http,$scope,$timeout,$window,terminalService,scheduleService,$location,$routeParams,$anchorScroll) {
 
     $rootScope.$on("$locationChangeEnd",function(event,current,previous){
         //alert("change start")
@@ -15,9 +24,14 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
     $scope.showListHeader = false;
     $scope.listHeaderMessage = "";
     $scope.showSubNav = false;
+    $scope.validScheduleStartDate = new Date();
+    $scope.validScheduletEndDate = new Date();
     $scope.setTitle= function(title){
         $scope.menuTitle = title;
 
+    }
+    $scope.setViewClass = function(viewClass){
+        $scope.viewClass = viewClass;
     }
     $scope.setListHeader= function(show,title){
         $scope.showListHeader = show;
@@ -33,8 +47,9 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
             $('.datepicker').datepicker({
                 format:'DD, M dd, yyyy',
                 autoclose: true,
-                orientation:'auto',
-                startDate:moment().format("DD, M dd, yyyy")
+                orientation:'top',
+                startDate:$scope.validScheduleStartDate,
+                endDate:$scope.validScheduleEndDate
             })
             $('.datepicker.input').on('changeDate', function(e){
                     var url = "/times/"+$routeParams.departingId+"/"+$routeParams.arrivingId+"/"+moment(e.date).format("YYYY-MM-DD")
@@ -119,7 +134,7 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
         $location.path(url);
         $scope.menuOpen = false;
     }
-    $scope.viewClass = "home";
+    //$scope.viewClass = "home";
     $scope.terminalApi = {};
     $scope.scheduleApi = {};
     $scope.FauntleroyVashon = {};
@@ -158,6 +173,11 @@ app.controller('applicationController',['$rootScope','$http','$scope','$timeout'
     $scope.$watch("scheduleApi",function(newData,oldData){
         if(newData != oldData){
             $scope.scheduleApi = newData;
+            var a = moment($scope.scheduleApi.ValidDateRange.DateFrom);
+            var b = moment($scope.scheduleApi.ValidDateRange.DateThru);
+            var days = b.diff(a, 'days');
+            $scope.validScheduleStartDate = "0d";
+            $scope.validScheduleEndDate = "+"+(days)+"d";
             console.log("Schedule service watched data! ",newData)
         }
 

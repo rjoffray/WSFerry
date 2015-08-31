@@ -25,6 +25,9 @@ body {
   background-color: #ffffff;
   overflow: hidden;
 }
+body *:focus {
+  outline: 0;
+}
 body > div {
   -webkit-transition: all 1s ease-in-out;
 }
@@ -217,10 +220,24 @@ body > div {
   top: auto;
   bottom: 0;
 }
+.input-group {
+  margin: 4px auto 0 auto;
+  width: 230px;
+}
+.input-group * {
+  border: 0;
+}
+.input-group .input-group-addon {
+  background-color: transparent;
+  padding: 4px 6px;
+}
 .datepicker {
-  border-width: 0;
-  text-align: center;
-  width: 65%;
+  text-align: left;
+  background-color: transparent;
+  padding: 0 4px;
+  width: 200px;
+}
+.datepicker.form-control {
   background-color: transparent;
 }
 .datepicker table tr td {
@@ -242,13 +259,6 @@ body > div {
   border-width: 1px;
   width: auto;
 }
-.datepicker.datepicker-dropdown.datepicker-orient-left:before {
-  left: 50%!important;
-}
-.datepicker.datepicker-dropdown.datepicker-orient-left:after {
-  left: 50%!important;
-  margin-left: 1px;
-}
 [role="right-nav"] {
   position: absolute;
   right: -100%;
@@ -256,7 +266,7 @@ body > div {
   background-color: white;
 }
 [role="right-nav"] .fa {
-  font-size: 24px!important;
+  font-size: 24px !important;
 }
 .active-nav [role="right-nav"] {
   right: 0%;

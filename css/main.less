@@ -17,6 +17,9 @@ body{
   margin:0;
   background-color: @white;
   overflow:hidden;
+  *:focus{
+	outline:0;
+  }
 }
 body > div { -webkit-transition: all 1s ease-in-out; }
 [role="main"],
@@ -220,61 +223,79 @@ body > div { -webkit-transition: all 1s ease-in-out; }
 
 
 }
-.datepicker{
-  border-width:0;
-  text-align:center;
-  width:65%;
-  background-color:transparent;
-  table tr td{
-	padding:3px 6px;
+.input-group {
+  margin: 4px auto 0 auto;
+  width:230px;
+  *{
+	border:0;
   }
-  table tr td.active.active{
+  .input-group-addon {
+	background-color: transparent;
+	padding:4px 6px;
+
+  }
+
+
+
+}
+.datepicker {
+  //border-width:0;
+  text-align: left;
+  background-color: transparent;
+  padding: 0 4px;
+  width:200px;
+  &.form-control {
+	background-color: transparent;
+  }
+
+  table tr td {
+	padding: 3px 6px;
+  }
+  table tr td.active.active {
 	background-color: @main-color;
-	background-image:url('');
+	background-image: url('');
 	border-radius: 0;
 
   }
-  table tr td.day.disabled{
-	color:lightgray;
+  table tr td.day.disabled {
+	color: lightgray;
   }
-  &:focus{
-	outline:0;
+  &:focus {
+	outline: 0;
   }
-  &.datepicker-dropdown{
-	background-color:@white;
+  &.datepicker-dropdown {
+	background-color: @white;
 
-	border-width:1px;
-	width:auto;
-	&.datepicker-orient-left:before {
-	  left:50%!important;
-
-	}
-	&.datepicker-orient-left:after{
-	  left:50%!important;
-	  margin-left:1px;
-	}
-
+	border-width: 1px;
+	width: auto;
+	//&.datepicker-orient-left:before {
+	//  left: 50% !important;
+	//
+	//}
+	//&.datepicker-orient-left:after {
+	//  left: 50% !important;
+	//  margin-left: 1px;
+	//}
 
   }
 }
-
 [role="right-nav"] {
-  position:absolute;
+  position: absolute;
 
-  right:-100%;
-  z-index:1000;
-  background-color:white;
-  .fa{
-	font-size:24px!important;
+  right: -100%;
+  z-index: 1000;
+  background-color: white;
+  .fa {
+	font-size: 24px !important;
   }
-  .active-nav &{
-	right:0%;
-	width:80%;
+  .active-nav & {
+	right: 0%;
+	width: 80%;
   }
-  .list-group-item{
-	&:active{
+  .list-group-item {
+	&:active {
 	  background-color: lightgray;
-	  color:black;
+	  color: black;
 	}
   }
 }
