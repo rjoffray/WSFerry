@@ -305,13 +305,10 @@ body > div {
 .map.modal .modal-dialog .modal-content .modal-body {
   padding: 0;
   height: 90%;
-  width: 100%;
 }
 .map.modal .modal-dialog .modal-content .modal-body .angular-google-map {
   height: 100%;
-  width: 100%;
 }
 .map.modal .modal-dialog .modal-content .modal-body .angular-google-map .angular-google-map-container {
   height: 100%;
-  width: 100%;
 }
