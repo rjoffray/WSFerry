@@ -261,7 +261,7 @@ body > div {
 }
 [role="right-nav"] {
   position: absolute;
-  right: -200%;
+  right: -100%;
   z-index: 1000;
   background-color: white;
 }
@@ -290,17 +290,25 @@ body > div {
   opacity: .5;
   z-index: 950;
 }
-.map.modal {
-  height: 100%;
-}
 .map.modal .modal-dialog {
-  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
 }
 .map.modal .modal-dialog .modal-content {
-  height: 97%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 0;
 }
 .map.modal .modal-dialog .modal-content .modal-header {
   height: 10%;
+  padding: 10px;
 }
 .map.modal .modal-dialog .modal-content .modal-body {
   padding: 0;
