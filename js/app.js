@@ -3,7 +3,14 @@
  */
     moment.tz.setDefault("America/Los_Angeles");
 
-    var app = angular.module('wsfApplication', ['ngRoute','ngResource','ngAnimate','ngTouch','duScroll']);
+    var app = angular.module('wsfApplication', ['ngRoute','ngResource','ngAnimate','ngTouch','duScroll','uiGmapgoogle-maps'])
+        .config(function(uiGmapGoogleMapApiProvider) {
+            uiGmapGoogleMapApiProvider.configure({
+                //key: 'your api key',
+                v: '3.20', //defaults to latest 3.X anyhow
+                libraries: 'weather,geometry,visualization'
+            });
+        });
 
     app.config(['$routeProvider',
             function($routeProvider) {

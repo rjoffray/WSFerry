@@ -81,7 +81,7 @@ body > div {
   height: 47px;
   line-height: 42px;
   vertical-align: middle;
-  padding: 0 ;
+  padding: 0;
 }
 [role="main"] .button-group .btn-group {
   margin: 0 auto;
@@ -119,7 +119,7 @@ body > div {
 }
 [role="main"] .view .list-group .list-group-item:active {
   background-color: lightgrey;
-  color: #000!important;
+  color: #000 !important;
 }
 [role="main"] .view .list-group .list-group-item:active.boat-gone {
   color: black;
@@ -130,13 +130,13 @@ body > div {
 }
 [role="main"] .view .list-group .list-group-item:link {
   background-color: medium;
-  color: #000!important;
+  color: #000 !important;
 }
 .times [role="main"] .view .list-group .list-group-item:active {
   background-color: #ffffff;
 }
 [role="main"] .view .list-group .list-group-item .fa {
-  font-size: 24px!important;
+  font-size: 24px !important;
 }
 [role="main"] .view .list-group .list-group-item .am-color {
   color: orange;
@@ -180,7 +180,7 @@ body > div {
 }
 [role="main"] .navbar-header .fa,
 [role="main"] .navbar-footer .fa {
-  font-size: 24px!important;
+  font-size: 24px !important;
 }
 [role="main"] .navbar-header .breadcrumb-text,
 [role="main"] .navbar-footer .breadcrumb-text {
@@ -289,4 +289,29 @@ body > div {
   background-color: black;
   opacity: .5;
   z-index: 950;
+}
+.map.modal {
+  height: 100%;
+}
+.map.modal .modal-dialog {
+  height: 100%;
+}
+.map.modal .modal-dialog .modal-content {
+  height: 97%;
+}
+.map.modal .modal-dialog .modal-content .modal-header {
+  height: 10%;
+}
+.map.modal .modal-dialog .modal-content .modal-body {
+  padding: 0;
+  height: 90%;
+  width: 100%;
+}
+.map.modal .modal-dialog .modal-content .modal-body .angular-google-map {
+  height: 100%;
+  width: 100%;
+}
+.map.modal .modal-dialog .modal-content .modal-body .angular-google-map .angular-google-map-container {
+  height: 100%;
+  width: 100%;
 }

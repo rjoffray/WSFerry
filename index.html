@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/css/bootstrap-datepicker.css"/>
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
+
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js"></script>
@@ -27,6 +28,8 @@
     <script src="https://code.angularjs.org/1.4.4/angular-route.min.js"></script>
     <script src="https://code.angularjs.org/1.4.4/angular-animate.min.js"></script>
     <script src="https://code.angularjs.org/1.4.4/angular-touch.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.1.6/angular-google-maps.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?language=en"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-scroll/0.7.2/angular-scroll.min.js"></script>
 
 
@@ -47,7 +50,20 @@
     <script src="js/controllers/departingController.js"></script>
     <script src="js/controllers/arrivingController.js"></script>
     <script src="js/controllers/timesController.js"></script>
-
+    <script>
+//        $(document).ready(function(){
+//            $.ccMap = {}
+//            function initMap() {
+//                var map = new google.maps.Map(document.getElementById('mapCanvas'), {
+//                zoom: 8,
+//                center: {lat: -34.397, lng: 150.644}
+//                });
+//            }
+//            $('#mapModal').on('shown.bs.modal', function () {
+//                initMap();
+//            });
+//        })
+    </script>
 
 </head>
 <body ng-controller="applicationController" class="js" ng-class="{'active-nav':menuOpen}" ng-swipe-right="goBack()" ng-swipe-left="goForward()">
@@ -80,7 +96,7 @@
 
         <div class="list-group-item list-heading top-nav button-group"  ng-if="showSubNav">
             <div class="btn-group btn-group-sm" role="group" aria-label="Buttons">
-                <button type="button" class="btn btn-secondary">map</button>
+                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#mapModal">map</button>
                 <button type="button" class="btn btn-secondary">cameras</button>
                 <button type="button" class="btn btn-secondary">fares</button>
                 <button type="button" class="btn btn-secondary">alerts</button>
@@ -94,6 +110,27 @@
 
     </div>
 </div>
+<!-- Modal -->
+<div class="modal fade map" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">{{menuTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <ui-gmap-google-map ng-if="showModalMap" center='map.center' refresh="true" zoom='map.zoom' draggable="true" control="map.control" events="map.events">
+                    <ui-gmap-marker models='markers'></ui-gmap-marker>
+                </ui-gmap-google-map>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 
 </body>
 </html>
