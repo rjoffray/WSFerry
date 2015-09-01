@@ -50,7 +50,7 @@ app.controller('applicationController', ['$rootScope',
                 $('.datepicker').datepicker({
                     format: 'DD, M dd, yyyy',
                     autoclose: true,
-                    orientation: 'top',
+                    orientation: 'auto',
                     startDate: $scope.validScheduleStartDate,
                     endDate: $scope.validScheduleEndDate
                 })
