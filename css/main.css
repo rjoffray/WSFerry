@@ -261,7 +261,7 @@ body > div {
 }
 [role="right-nav"] {
   position: absolute;
-  right: -100%;
+  right: -200%;
   z-index: 1000;
   background-color: white;
 }
