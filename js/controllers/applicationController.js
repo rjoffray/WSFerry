@@ -6,9 +6,10 @@ app.controller('applicationController', ['$rootScope',
     '$window',
     'terminalService',
     'scheduleService',
+    'vesselService',
     '$location',
     '$routeParams',
-    '$anchorScroll','uiGmapGoogleMapApi', function ($rootScope, $http,$log, $scope, $timeout, $window, terminalService, scheduleService, $location, $routeParams, $anchorScroll,uiGmapGoogleMapApi) {
+    '$anchorScroll','uiGmapGoogleMapApi','$compile', function ($rootScope, $http,$log, $scope, $timeout, $window, terminalService, scheduleService, vesselService, $location, $routeParams, $anchorScroll,uiGmapGoogleMapApi,$compile) {
 
         $rootScope.$on("$locationChangeEnd", function (event, current, previous) {
             //alert("change start")
@@ -109,6 +110,45 @@ app.controller('applicationController', ['$rootScope',
                 });
             },0)
         }
+        $scope.createVesselMarkers = function(){
+            $timeout(function(){
+                _.forEach($scope.vesselsApi, function (v,k) {
+
+                       if(v.InService == true) {
+
+                           var myLatLng = {lat: v.Latitude, lng: v.Longitude};
+                           var marker = new google.maps.Marker({
+                               position: myLatLng,
+                               map: $scope.mapInstance,
+                               title: v.VesselName,
+                               icon: {
+                                   path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+                                   scale: 3,
+                                   fillColor: "#017359",
+                                   fillOpacity: 0.8,
+                                   strokeWeight: 0,
+                                   strokeColor: "blue",
+                                   rotation: v.Heading //this is how to rotate the pointer
+                               }
+                           });
+                           var eta = v.Eta != null ? 'Eta: ' + moment(v.Eta).format("h:mm a") : '';
+                           var infowindow = new google.maps.InfoWindow({
+                               content: '<div>Vessel: ' + v.VesselName + '</div> \n\
+                                  <div>Departing: ' + v.DepartingTerminalName + '</div>\n\
+                                  <div>Arriving: ' + v.ArrivingTerminalName + '</div>\n\
+                                  <span>' + eta + '</span>'
+                           });
+
+                           google.maps.event.addListener(marker, 'click', function () {
+                               if ($scope.infowindow) $scope.infowindow.close();
+                               $scope.infowindow = infowindow;
+                               infowindow.open($scope.mapInstance, marker);
+                           });
+                           $scope.markers.push(marker);
+                       }
+                });
+            },0)
+        }
         $('#mapModal').on('shown.bs.modal', function () {
             $scope.markers=[];
             $timeout(function(){
@@ -119,7 +159,8 @@ app.controller('applicationController', ['$rootScope',
                     events: {
                         tilesloaded: function (map) {
                             $scope.mapInstance = map;
-                            $scope.createTerminalMarker();
+                            //$scope.createTerminalMarker();
+                            $scope.createVesselMarkers();
                             $scope.$apply(function () {
                                 google.maps.event.trigger(map, "resize");
                             });
@@ -220,11 +261,25 @@ app.controller('applicationController', ['$rootScope',
             //$scope.terminalApi =  error;
             console.log("Error: ", error);
         });
-
+        vesselService.getVesselLocations().then(function(response){
+            $scope.vesselsApi =  response.data;
+            //console.log("$$$$$$$$$$$$$$$$$$ Vessel Response $$$$$$$$$$$$$$",response.data)
+        },function(error){
+            //$scope.terminalApi =  error;
+            console.log("Error: ",error);
+        });
         $scope.$watch("terminalApi", function (newData, oldData) {
             if (newData != oldData) {
+                $scope.Terminals = newData.Basics;
                 $scope.terminalApi = newData;
                 console.log("Terminal service watched data! ", newData)
+            }
+
+        });
+        $scope.$watch("vesselsApi", function (newData, oldData) {
+            if (newData != oldData) {
+                $scope.vesselsApi = newData;
+                console.log("Vessels service watched data! ", newData)
             }
 
         });
@@ -263,13 +318,13 @@ app.controller('applicationController', ['$rootScope',
             });
             return name;
         }
-        $scope.$watch("terminalApi", function (newData, oldData) {
-            if (newData != oldData) {
-                $scope.Terminals = newData.Basics;
-                $scope.terminalApi = newData;
-                //console.log("Terminal service watched data! ",newData)
-            }
-
-        });
+        //$scope.$watch("terminalApi", function (newData, oldData) {
+        //    if (newData != oldData) {
+        //        $scope.Terminals = newData.Basics;
+        //        $scope.terminalApi = newData;
+        //        //console.log("Terminal service watched data! ",newData)
+        //    }
+        //
+        //});
 
     }]);

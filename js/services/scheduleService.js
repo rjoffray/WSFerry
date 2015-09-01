@@ -116,6 +116,7 @@ app.service('scheduleService',function($http,$q) {
             }
         },
         getScheduleServices :function(){
+            moment.tz.setDefault('America/Los_Angeles');
             var deferred = $q.defer();
             var _self = this;
             _self.now = moment().format('DD/MM/YYYY HH:mm:ss.SSS');

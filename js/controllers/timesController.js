@@ -1,4 +1,4 @@
-app.controller('timesController',['$scope', '$routeParams', '$location', '$resource','scheduleService','$timeout','$window','$anchorScroll','$document', function($scope, $routeParams, $location, $resource,scheduleService,$timeout,$window,$anchorScroll,$document) {
+app.controller('timesController',['$scope', '$routeParams', '$location', '$resource','scheduleService','vesselService','$timeout','$window','$anchorScroll','$document', function($scope, $routeParams, $location, $resource,scheduleService,vesselService,$timeout,$window,$anchorScroll,$document) {
     //console.log("routeParams: ",$routeParams)
     $scope.viewClass = 'times';
 
@@ -13,8 +13,11 @@ app.controller('timesController',['$scope', '$routeParams', '$location', '$resou
         $scope.setSubNav(true);
         $scope.setViewClass('times');
     });
+    $scope.$watch("vesselsApi",function(newData,oldData){
 
+    });
     $scope.timesApi = {};
+    $scope.vesselsApi = {};
     $scope.validDateRangeApi = {};
     $scope.nextTimeFound = false;
 
