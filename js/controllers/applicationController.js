@@ -123,7 +123,7 @@ app.controller('applicationController', ['$rootScope',
                                title: v.VesselName,
                                icon: {
                                    path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-                                   scale: 3,
+                                   scale: 4,
                                    fillColor: "#017359",
                                    fillOpacity: 0.8,
                                    strokeWeight: 0,
