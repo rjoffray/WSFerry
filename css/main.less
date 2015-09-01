@@ -336,8 +336,8 @@ body > div {
 }
 
 .map.modal {
-
-
+	position:absolute;
+	width:auto;
   .modal-dialog {
 	position:absolute;
 	top:0;
@@ -353,19 +353,40 @@ body > div {
 	  bottom:0;
 	  border-radius: 0;
 	  .modal-header {
-		height: 10%;
-		padding:10px;
-		h4{
-		  padding-left:25px;
-		  font-size:20px;
-		}
-		.close{
-		  float:left;
+		position:absolute;
+		top:0;
+		left:0;
+		right:0;
+		bottom:0;
+		height:30px;
+		line-height:1.5rem;
+		vertical-align: middle;
+		text-align:center;
+		color:@white;
+		background-color: @main-color;
+		z-index:10000;
+		padding:2px 0 0 0;
+		button.close{
+		  float:right;
+		  margin-right:10px;
+		  text-shadow: none;
+		  font-size:1rem;
+		  opacity:1;
+		  color:@white;
+		  span{
+			font-size:1.5rem;
+		  }
 		}
 	  }
 	  .modal-body {
+		position:absolute;
+		top:30px;
+		left:0;
+		right:0;
+		bottom:0;
+		background-color: transparent;
 		padding: 0;
-		height: 90%;
+
 		.angular-google-map {
 		  height: 100%;
 		  .angular-google-map-container{
