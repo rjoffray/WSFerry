@@ -290,11 +290,13 @@ body > div {
   opacity: .5;
   z-index: 950;
 }
-.map.modal {
+.map.modal,
+.cameras.modal {
   position: absolute;
   width: auto;
 }
-.map.modal .modal-dialog {
+.map.modal .modal-dialog,
+.cameras.modal .modal-dialog {
   position: absolute;
   top: 0;
   left: 0;
@@ -302,30 +304,38 @@ body > div {
   bottom: 0;
   margin: 0;
 }
-.map.modal .modal-dialog .modal-content {
+.map.modal .modal-dialog .modal-content,
+.cameras.modal .modal-dialog .modal-content {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   border-radius: 0;
+  overflow: hidden;
 }
-.map.modal .modal-dialog .modal-content .modal-header {
+.map.modal .modal-dialog .modal-content .modal-header,
+.cameras.modal .modal-dialog .modal-content .modal-header {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 30px;
+  height: 44px;
+  font-weight: 600;
+  font-size: 1rem;
   line-height: 1.5rem;
   vertical-align: middle;
   text-align: center;
   color: #ffffff;
   background-color: #6699cc;
   z-index: 10000;
-  padding: 2px 0 0 0;
+  padding: 10px 0 0 0;
+  border: 0;
+  border-radius: 0;
 }
-.map.modal .modal-dialog .modal-content .modal-header button.close {
+.map.modal .modal-dialog .modal-content .modal-header button.close,
+.cameras.modal .modal-dialog .modal-content .modal-header button.close {
   float: right;
   margin-right: 10px;
   text-shadow: none;
@@ -333,21 +343,32 @@ body > div {
   opacity: 1;
   color: #ffffff;
 }
-.map.modal .modal-dialog .modal-content .modal-header button.close span {
+.map.modal .modal-dialog .modal-content .modal-header button.close span,
+.cameras.modal .modal-dialog .modal-content .modal-header button.close span {
   font-size: 1.5rem;
 }
-.map.modal .modal-dialog .modal-content .modal-body {
+.map.modal .modal-dialog .modal-content .modal-body,
+.cameras.modal .modal-dialog .modal-content .modal-body {
   position: absolute;
-  top: 30px;
+  top: 44px;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: transparent;
   padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
-.map.modal .modal-dialog .modal-content .modal-body .angular-google-map {
+.map.modal .modal-dialog .modal-content .modal-body img,
+.cameras.modal .modal-dialog .modal-content .modal-body img {
+  width: 100%;
+  height: auto;
+}
+.map.modal .modal-dialog .modal-content .modal-body .angular-google-map,
+.cameras.modal .modal-dialog .modal-content .modal-body .angular-google-map {
   height: 100%;
 }
-.map.modal .modal-dialog .modal-content .modal-body .angular-google-map .angular-google-map-container {
+.map.modal .modal-dialog .modal-content .modal-body .angular-google-map .angular-google-map-container,
+.cameras.modal .modal-dialog .modal-content .modal-body .angular-google-map .angular-google-map-container {
   height: 100%;
 }

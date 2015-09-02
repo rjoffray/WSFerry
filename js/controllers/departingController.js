@@ -1,5 +1,5 @@
 app.controller('departingController',['$http','$scope','$timeout','$window','terminalService','scheduleService','$routeParams', function($http,$scope,$timeout,$window,terminalService,scheduleService,$routeParams) {
-    $scope.viewClass = 'departing';
+    $scope.setViewClass("departing");
     $scope.showListHeader = true;
     $scope.listHeaderMessage = "departing terminals";
     $scope.$watch("terminalApi",function(newData,oldData){

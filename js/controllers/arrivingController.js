@@ -1,6 +1,6 @@
 app.controller('arrivingController',['$scope', '$routeParams', '$location', '$resource','scheduleService','$window','$timeout', function($scope, $routeParams, $location, $resource,scheduleService,$window,$timeout) {
     //console.log("routeParams: ",$routeParams)
-    $scope.viewClass = 'arriving';
+    $scope.setViewClass("arriving");
     $scope.departingId = $routeParams.departingId;
     $scope.$watch("terminalApi",function(newData,oldData){
         $scope.setTitle($scope.getTerminalNameFromId($scope.departingId))

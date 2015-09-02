@@ -29,7 +29,23 @@ app.controller('applicationController', ['$rootScope',
         $scope.validScheduleStartDate = new Date();
         $scope.validScheduletEndDate = new Date();
         $scope.showModalMap = false;
+        $scope.cameras = [];
+        $scope.setCameras = function(departing,arriving){
 
+            var cameras2 = [];
+            _.forEach(cameras,function(v,k){
+                if (k == departing || k == arriving) {
+                    _.forEach(v,function(v2,k2){
+                        var temp = {};
+                        temp.terminal=k2.toString();
+                        temp.camera=v2;
+                        cameras2.push(temp)
+                    })
+                }
+            });
+
+            $scope.cameras = cameras2;
+        }
         $scope.setTitle = function (title) {
             $scope.menuTitle = title;
 
@@ -149,7 +165,14 @@ app.controller('applicationController', ['$rootScope',
                 });
             },0)
         }
+
+        $('#camerasModal').on('show.bs.modal', function () {
+            //alert("cameras")
+            //$scope.cameras = $scope.setCameras($routeParams.departingId,$routeParams.arrivingId);
+
+        });
         $('#mapModal').on('shown.bs.modal', function () {
+
             $scope.markers=[];
             $timeout(function(){
                 $scope.bounds = $scope.getMapBounds()
@@ -233,7 +256,10 @@ app.controller('applicationController', ['$rootScope',
             $location.path(url);
             $scope.menuOpen = false;
         }
-        //$scope.viewClass = "home";
+        $scope.setViewClass = function(viewClass){
+            $scope.viewClass = viewClass;
+        }
+        $scope.setViewClass("home");
         $scope.terminalApi = {};
         $scope.scheduleApi = {};
         $scope.FauntleroyVashon = {};
