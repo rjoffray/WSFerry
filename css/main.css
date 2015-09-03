@@ -83,6 +83,9 @@ body > div {
   vertical-align: middle;
   padding: 0;
 }
+[role="main"] .button-group button:focus {
+  outline: 0;
+}
 [role="main"] .button-group .btn-group {
   margin: 0 auto;
 }
