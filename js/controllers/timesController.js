@@ -8,7 +8,7 @@ app.controller('timesController',['$scope', '$routeParams', '$location', '$resou
     $scope.$watch("terminalApi",function(newData,oldData){
         $scope.setTitle($scope.getTerminalNameFromId($scope.departingId)+" - " + $scope.getTerminalNameFromId($scope.arrivingId));
         //$scope.setListHeader(true,moment().format("dddd, MMMM DD, YYYY"));
-        var template = '<div class="input-group" onClick="$event.stopPropagation()"> \n\
+        var template = '<div class="input-group" ng-click="$event.stopPropagation()"> \n\
                           <span class="input-group-addon">\n\
                               <span class="fa fa-calendar" ng-click="showDatePicker()"></span>\n\
                            </span>\n\
