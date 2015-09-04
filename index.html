@@ -1,40 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="wsfApplication">
 <head>
     <meta charset="UTF-8">
     <title>WSF Schedule</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css" />
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!--<meta name="apple-mobile-web-app-capable" content="yes" />-->
+    <!--<meta name="apple-touch-fullscreen" content="NO">-->
+    <!--<meta name="apple-mobile-web-app-status-bar-style" content="default">-->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-startup-image" href="images/default.png" />
+    <link rel="apple-touch-icon" href="images/WSFicon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/css/bootstrap-datepicker.css"/>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
+
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js"></script>
+
     <script src="https://code.angularjs.org/1.4.4/angular.min.js"></script>
     <script src="https://code.angularjs.org/1.4.4/angular-resource.min.js"></script>
     <script src="https://code.angularjs.org/1.4.4/angular-route.min.js"></script>
     <script src="https://code.angularjs.org/1.4.4/angular-animate.min.js"></script>
+    <script src="https://code.angularjs.org/1.4.4/angular-touch.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.1.6/angular-google-maps.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?language=en"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-scroll/0.7.2/angular-scroll.min.js"></script>
+
+
+
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>-->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.4.0/moment-timezone.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/amplifyjs/1.1.2/amplify.min.js"></script>
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/main.css"/>
     <!--<script  src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.5/less.js"></script>-->
 
-
-
-
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/services/terminalService.js"></script>
+    <script src="js/services/scheduleService.js"></script>
+    <script src="js/services/vesselService.js"></script>
+    <script src="js/controllers/applicationController.js"></script>
+    <script src="js/controllers/departingController.js"></script>
+    <script src="js/controllers/arrivingController.js"></script>
+    <script src="js/controllers/timesController.js"></script>
+    <script>
+//        $(document).ready(function(){
+//            $.ccMap = {}
+//            function initMap() {
+//                var map = new google.maps.Map(document.getElementById('mapCanvas'), {
+//                zoom: 8,
+//                center: {lat: -34.397, lng: 150.644}
+//                });
+//            }
+//            $('#mapModal').on('shown.bs.modal', function () {
+//                initMap();
+//            });
+//        })
+    </script>
 
 </head>
-<body ng-app="wsfApplication" ng-controller="applicationController">
-    <div ng-view class="view {{viewClass}}">
+<body ng-controller="applicationController" class="js" ng-class="{'active-nav':menuOpen}" ng-swipe-right="goBack()" ng-swipe-left="goForward()">
+<div id="scrolltop"></div>
+
+<nav role="right-nav">
+    <ul class="list-unstyled list-group">
+        <li class="list-group-item" ng-click='setViewClass("home");goToUrl("/")'>
+            <span class="pull-left fa fa-home"></span>
+            Departure Terminals
+        </li>
+        <li class="list-group-item">
+            <span class="pull-left fa fa-heart"></span>
+            Favorite Terminals
+        </li>
+        <li class="list-group-item">
+            <span class="pull-left fa fa-ticket"></span>
+            Ticket Lookup
+        </li>
+        <li class="list-group-item">
+            <span class="pull-left fa fa-gear"></span>
+            Preferences
+        </li>
+    </ul>
+</nav>
+<div class="offcanvas">
+    <div role="main">
+        <div class="list-group-item navbar-header"><span ng-if="viewClass == 'times'" class="pull-left fa fa-exchange" ng-click="reverseSchedule()"></span><span class="pull-right fa fa-bars" ng-click="openNav()"></span>{{menuTitle}}</div>
+        <div class="list-group-item list-heading top-nav" ng-if="showListHeader" ng-bind-html="listHeaderMessage | unsafe"></div>
+
+        <div class="list-group-item list-heading top-nav button-group"  ng-if="showSubNav">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Buttons">
+                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#mapModal">map</button>
+                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#camerasModal">cameras</button>
+                <button type="button" class="btn btn-secondary">fares</button>
+                <button type="button" class="btn btn-secondary">alerts</button>
+            </div>
+        </div>
+        <div ng-view class="view {{viewClass}} slide">
+
+        </div>
+        <!--<div class="list-group-item list-footer" ng-if="showListFooter">{{listFooterMessage}}</div>-->
+        <!--<div class="list-group-item navbar-footer"><span class="pull-left fa fa-info" ng-click="goInfo()"></span>&nbsp;</div>-->
 
     </div>
-    <script src="js/app.js"></script>
-    <script src="js/directives.js"></script>
-    <script src="js/factories.js"></script>
-    <script src="js/services.js"></script>
-    <script src="js/controllers.js"></script>
+</div>
+<!-- Modal -->
+<div class="modal fade map" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header list-group-item">
+                {{menuTitle}}
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="fa fa-times"></span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <!--<h4 class="modal-title" id="myModalLabel">{{menuTitle}}</h4>-->
+            </div>
+            <div class="modal-body">
+                <ui-gmap-google-map ng-if="showModalMap" center='map.center' refresh="true" zoom='map.zoom' draggable="true" control="map.control" events="map.events">
+                    <ui-gmap-marker models='markers'></ui-gmap-marker>
+                </ui-gmap-google-map>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade cameras" id="camerasModal" tabindex="-1" role="dialog" aria-labelledby="camerasModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                {{menuTitle}}
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="fa fa-times"></span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <!--<h4 class="modal-title" id="myModalLabel">{{menuTitle}}</h4>-->
+            </div>
+            <div class="modal-body">
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="c in cameras">
+                        <h4>{{c.terminal}}</h4>
+                        <div><img src="{{c.camera}}" class="img-responsive"/></div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

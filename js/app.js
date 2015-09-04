@@ -1,8 +1,16 @@
 /**
  * Created by rjoffray on 8/16/15.
  */
+    moment.tz.setDefault("America/Los_Angeles");
 
-    var app = angular.module('wsfApplication', ['ngRoute','ngResource','ngAnimate']);
+    var app = angular.module('wsfApplication', ['ngRoute','ngResource','ngAnimate','ngTouch','duScroll','uiGmapgoogle-maps'])
+        .config(function(uiGmapGoogleMapApiProvider) {
+            uiGmapGoogleMapApiProvider.configure({
+                //key: 'your api key',
+                v: '3.20', //defaults to latest 3.X anyhow
+                libraries: 'weather,geometry,visualization'
+            });
+        });
 
     app.config(['$routeProvider',
             function($routeProvider) {
@@ -14,6 +22,10 @@
                     when('/arriving/:departingId', {
                         templateUrl: 'partials/arriving.html',
                         controller: 'arrivingController'
+                    }).
+                    when('/times/:departingId/:arrivingId/:scheduleDate', {
+                        templateUrl: 'partials/times.html',
+                        controller: 'timesController'
                     }).
                     when('/times/:departingId/:arrivingId', {
                         templateUrl: 'partials/times.html',
@@ -30,6 +42,37 @@
             return $sce.trustAsHtml(val);
         };
     });
+    app.animation('.slide', ['$animateCss', function($animateCss) {
+        return {
+            enter: function(element, doneFn) {
+                var offset=0;
+                if(element.hasClass('with-list-head')){
+                    offset=30;
+                }
+                if(element.hasClass('with-list-head') && element.hasClass('with-button-nav')){
+                    offset=77
+                }
+                element.height($(window).height()-(44+offset));
+                $("[role='right-nav']").height($(window).height())
+
+                window.addEventListener("orientationchange", function() {
+                    element.height($(window).height()-(44+offset));
+                    $("[role='right-nav']").height($(window).height())
+                }, false);
+
+                //setup animation
+                var animation = $animateCss(element, {
+                    event: 'enter'
+                });
+                //trigger animation
+                animation.start();
+                //alert($(window).height())
+               //element.height($(window).height())
+                //setup done callback
+                //animation.done(doneFn);
+            }
+        }
+    }])
 
 _.mixin({
     'findByValues': function(collection, property, values) {
@@ -54,4 +97,14 @@ _.mixin({
         });
     }
 });
+
+//$(document).ready(function () {
+//    function reorient(e) {
+//        var portrait = (window.orientation % 180 == 0);
+//        $("body > div").css("-webkit-transform-origin", "0 0");
+//        $("body > div").css("-webkit-transform", !portrait ? "rotate(0deg)" : "");
+//    }
+//    window.onorientationchange = reorient;
+//    window.setTimeout(reorient, 0);
+//});
 
