@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="row filler">
+        <div class="col-xs-12">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="input-group input-group-sm" ng-click="$event.stopPropagation()">
+                                          <span class="input-group-addon">
+                                              <span class="fa fa-ticket" ng-click="showDatePicker()"></span>
+                                           </span>
+                <input type="text" class="form-control ticketForm" ng-model="ticketId" placeholder="Enter a ticket #"/>
+            </div>
+        </div>
+    </div>
+    <div class="row filler">
+        <div class="col-xs-12">&nbsp;</div>
+    </div>
+</div>
+<ul class="ticket-list list-unstyled list-group">
+    <li class="list-group-item" ng-repeat="t in ticketData.History" >
+        <h6 class="list-group-item-heading">{{t.Description}}</h6>
+        <p class="list-group-item-text">{{t.Action}} - {{t.Date}}</p>
+
+     </li>
+</ul>

@@ -56,6 +56,13 @@ body > div {
   .active-nav & {
 	left: -80%;
   }
+  .timesNav{
+	margin-top:6px;
+	input{
+	  background-color: @white;
+	  height:32px;
+	}
+  }
   .list-heading,
   .list-footer {
 	position: absolute;
@@ -65,9 +72,10 @@ body > div {
 	right: 0;
 	background-color: rgba(240, 248, 255, .7);
 	color: darkgray;
-	height: 30px;
+	height: 40px;
 	padding: .1rem 1rem .3rem 1rem;
 	text-align: center;
+	line-height:36px;
 
   }
   .list-footer {
@@ -81,7 +89,7 @@ body > div {
 	background-color: rgba(240, 248, 255, .7);
 	position: absolute;
 	text-align: center;
-	top: 74px;
+	top: 84px;
 	left: 0;
 	right: 0;
 	bottom: auto;
@@ -101,7 +109,7 @@ body > div {
   .view {
 	box-sizing: border-box;
 	position: relative;
-	padding-top: 44px;
+	padding-top: 84px;
 	z-index: 941;
 	background-color: @white;
 	overflow-y: auto;
@@ -112,12 +120,34 @@ body > div {
 		pointer-events: none;
 	  }
 	}
+	&.tickets {
+	  .input-wrapper{
+		border:1px solid lightgray;
+		//.input-group {
+		//  margin: 4px auto 0 auto;
+		//  width: 230px;
+		//  * {
+		//	border: 0;
+		//  }
+		//  .input-group-addon {
+		//	background-color: transparent;
+		//	padding: 4px 6px;
+		//
+		//  }
+		//
+		//}
+	  }
+	}
 	&.with-list-head {
-	  padding-top: 29px + 44px;
+	  padding-top: 40px + 44px;
+	}
+	&.with-button-nav {
+	  padding-top: 91px;
 	}
 	&.with-list-head.with-button-nav {
-	  padding-top: 121px;
+	  padding-top: 131px;
 	}
+
 	&.slide.ng-leave {
 	  animation: fadeOut 0.5s both ease-in;
 	}
@@ -244,29 +274,17 @@ body > div {
 
 }
 
-.input-group {
-  margin: 4px auto 0 auto;
-  width: 230px;
-  * {
-	border: 0;
-  }
-  .input-group-addon {
-	background-color: transparent;
-	padding: 4px 6px;
 
-  }
 
-}
-
-.datepicker {
+.datepicker{
   //border-width:0;
   text-align: left;
   background-color: transparent;
   padding: 0 4px;
   width: 200px;
-  &.form-control {
-	background-color: transparent;
-  }
+  //&.form-control {
+	//background-color: transparent;
+  //}
 
   table tr td {
 	padding: 3px 6px;
@@ -414,6 +432,17 @@ body > div {
 	}
   }
 }
+//.input-group {
+//  margin-top: 2px;
+//
+//  .input-group-addon {
+//	padding: .260rem .75rem!important;
+//	background-color:@white;
+//  }
+//  .form-control{
+//	background-color:@white;
+//  }
+//}
 
 
 

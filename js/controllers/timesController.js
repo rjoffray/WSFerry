@@ -4,16 +4,22 @@ app.controller('timesController',['$scope', '$routeParams', '$location', '$resou
     $scope.setCameras($routeParams.departingId,$routeParams.arrivingId);
     $scope.departingId = $routeParams.departingId;
     $scope.arrivingId = $routeParams.arrivingId;
-    $scope.scheduleDate = $routeParams.scheduleDate || moment().format("YYYY-MM-DD");
+    //$scope.scheduleDate = moment($routeParams.scheduleDate).format('dddd, MMM DD, YYYY') || moment().format('dddd, MMM DD, YYYY');
     $scope.$watch("terminalApi",function(newData,oldData){
         $scope.setTitle($scope.getTerminalNameFromId($scope.departingId)+" - " + $scope.getTerminalNameFromId($scope.arrivingId));
         //$scope.setListHeader(true,moment().format("dddd, MMMM DD, YYYY"));
-        var template = '<div class="input-group" ng-click="$event.stopPropagation()"> \n\
-                          <span class="input-group-addon">\n\
-                              <span class="fa fa-calendar" ng-click="showDatePicker()"></span>\n\
-                           </span>\n\
-                          <input class="datepicker input form-control" ng-model="scheduleDate" type=text value="'+moment().format("dddd, MMM DD, YYYY")+'" readonly />\n\
-                      </div>'
+        var template = '<div class="container-fluid timesNav">\n\
+                            <div class="row">\n\
+                                <div class="col-xs-12">\n\
+                                    <div class="input-group input-group-sm" ng-click="$event.stopPropagation()"> \n\
+                                          <span class="input-group-addon">\n\
+                                              <span class="fa fa-calendar" ng-click="showDatePicker()"></span>\n\
+                                           </span>\n\
+                                           <input class="datepicker input form-control" ng-model="scheduleDate" type=text value="'+moment().format("dddd, MMM DD, YYYY")+'" readonly />\n\
+                                    </div>\n\
+                                </div>\n\
+                            </div>\n\
+                        </div>'
         $scope.setListHeader(true,template);
         $scope.setDatePicker();
         $scope.setSubNav(true);

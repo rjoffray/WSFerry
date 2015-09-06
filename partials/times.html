@@ -1,3 +1,4 @@
+
 <ul class="times-list list-unstyled list-group">
     <li class="list-group-item" ng-repeat="t in Schedule.TerminalCombos[0].Times" ng-class="isBoatGone(t.DepartingTime)?'boat-gone':'boat-available'">
         <span ng-class="isAmTime(t.DepartingTime)?'am-color':'pm-color'">{{fixMsDate(t.DepartingTime)}} <span ng-if="t.ArrivingTime != null" class=" pull-right">{{fixMsDate(t.ArrivingTime)}}</span></span>

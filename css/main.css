@@ -48,6 +48,13 @@ body > div {
 .active-nav [role="main"] {
   left: -80%;
 }
+[role="main"] .timesNav {
+  margin-top: 6px;
+}
+[role="main"] .timesNav input {
+  background-color: #ffffff;
+  height: 32px;
+}
 [role="main"] .list-heading,
 [role="main"] .list-footer {
   position: absolute;
@@ -57,9 +64,10 @@ body > div {
   right: 0;
   background-color: rgba(240, 248, 255, 0.7);
   color: darkgray;
-  height: 30px;
+  height: 40px;
   padding: .1rem 1rem .3rem 1rem;
   text-align: center;
+  line-height: 36px;
 }
 [role="main"] .list-footer {
   top: auto;
@@ -72,7 +80,7 @@ body > div {
   background-color: rgba(240, 248, 255, 0.7);
   position: absolute;
   text-align: center;
-  top: 74px;
+  top: 84px;
   left: 0;
   right: 0;
   bottom: auto;
@@ -92,7 +100,7 @@ body > div {
 [role="main"] .view {
   box-sizing: border-box;
   position: relative;
-  padding-top: 44px;
+  padding-top: 84px;
   z-index: 941;
   background-color: #ffffff;
   overflow-y: auto;
@@ -102,11 +110,17 @@ body > div {
 [role="main"] .view.times .list-group-item {
   pointer-events: none;
 }
+[role="main"] .view.tickets .input-wrapper {
+  border: 1px solid lightgray;
+}
 [role="main"] .view.with-list-head {
-  padding-top: 73px;
+  padding-top: 84px;
+}
+[role="main"] .view.with-button-nav {
+  padding-top: 91px;
 }
 [role="main"] .view.with-list-head.with-button-nav {
-  padding-top: 121px;
+  padding-top: 131px;
 }
 [role="main"] .view.slide.ng-leave {
   animation: fadeOut 0.5s both ease-in;
@@ -223,25 +237,11 @@ body > div {
   top: auto;
   bottom: 0;
 }
-.input-group {
-  margin: 4px auto 0 auto;
-  width: 230px;
-}
-.input-group * {
-  border: 0;
-}
-.input-group .input-group-addon {
-  background-color: transparent;
-  padding: 4px 6px;
-}
 .datepicker {
   text-align: left;
   background-color: transparent;
   padding: 0 4px;
   width: 200px;
-}
-.datepicker.form-control {
-  background-color: transparent;
 }
 .datepicker table tr td {
   padding: 3px 6px;

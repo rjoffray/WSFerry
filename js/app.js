@@ -31,6 +31,14 @@
                         templateUrl: 'partials/times.html',
                         controller: 'timesController'
                     }).
+                    when('/tickets/:ticketId', {
+                        templateUrl: 'partials/tickets.html',
+                        controller: 'ticketsController'
+                    }).
+                    when('/tickets', {
+                        templateUrl: 'partials/tickets.html',
+                        controller: 'ticketsController'
+                    }).
                     otherwise({
                         redirectTo: 'departing'
                     });
