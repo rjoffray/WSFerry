@@ -1,3 +1,5 @@
+// http://www.wsfscheduleapp.com/data/GetCamerasJson.php
+
 var cameras = {
     "1": {
         "Anacortes::Terminal": "http://images.wsdot.wa.gov/wsf/anacortes/terminal/anaterm.jpg",

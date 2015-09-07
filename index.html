@@ -52,6 +52,7 @@
     <script src="js/controllers/departingController.js"></script>
     <script src="js/controllers/arrivingController.js"></script>
     <script src="js/controllers/timesController.js"></script>
+    <script src="js/controllers/ticketsController.js"></script>
     <script>
 //        $(document).ready(function(){
 //            $.ccMap = {}
@@ -81,7 +82,7 @@
             <span class="pull-left fa fa-heart"></span>
             Favorite Terminals
         </li>
-        <li class="list-group-item">
+        <li class="list-group-item" ng-click='goToUrl("/tickets")'>
             <span class="pull-left fa fa-ticket"></span>
             Ticket Lookup
         </li>
@@ -112,7 +113,7 @@
 
     </div>
 </div>
-<!-- Modal -->
+<!-- Modal http://angular-ui.github.io/angular-google-maps/ -->
 <div class="modal fade map" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
