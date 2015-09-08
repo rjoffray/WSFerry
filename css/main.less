@@ -33,9 +33,7 @@ body {
   }
 }
 
-body > div {
-  -webkit-transition: all 1s ease-in-out;
-}
+
 
 [role="main"],
 [role="right-nav"] {
@@ -44,6 +42,7 @@ body > div {
   width: 100%;
   //min-height:100%;
   position: absolute;
+  top:0;
 }
 
 [role="main"] {
@@ -53,15 +52,13 @@ body > div {
   bottom: 0;
   right: 0;
   z-index: 940;
-  .active-nav & {
-	left: -80%;
-  }
   .timesNav{
 	margin-top:6px;
-	input{
-	  background-color: @white;
-	  height:32px;
-	}
+
+  }
+
+  .active-nav & {
+	left: -80%;
   }
   .list-heading,
   .list-footer {
@@ -73,7 +70,7 @@ body > div {
 	background-color: rgba(240, 248, 255, .7);
 	color: darkgray;
 	height: 40px;
-	padding: .1rem 1rem .3rem 1rem;
+	padding: .08rem 1rem .3rem 1rem;
 	text-align: center;
 	line-height:36px;
 
@@ -320,8 +317,8 @@ body > div {
 
 [role="right-nav"] {
   position: absolute;
-
-  right: -100%;
+  top:0;
+  right: -200%;
   z-index: 1000;
   background-color: white;
   .fa {
@@ -432,17 +429,19 @@ body > div {
 	}
   }
 }
-//.input-group {
-//  margin-top: 2px;
-//
-//  .input-group-addon {
-//	padding: .260rem .75rem!important;
-//	background-color:@white;
-//  }
-//  .form-control{
-//	background-color:@white;
-//  }
-//}
+.input-group {
+  margin-top: 2px;
+
+  .input-group-addon {
+	padding: .260rem .75rem!important;
+	background-color:@white;
+  }
+  .form-control{
+	padding: .240rem .75rem!important;
+	background-color:@white;
+  }
+
+}
 
 
 

@@ -58,15 +58,15 @@
                     offset=30;
                 }
                 if(element.hasClass('with-list-head') && element.hasClass('with-button-nav')){
-                    offset=77
+                    offset=87
                 }
                 element.height($(window).height()-(44+offset));
                 $("[role='right-nav']").height($(window).height())
 
-                window.addEventListener("orientationchange", function() {
-                    element.height($(window).height()-(44+offset));
-                    $("[role='right-nav']").height($(window).height())
-                }, false);
+                //window.addEventListener("orientationchange", function() {
+                //    element.height($(window).height()-(44+offset));
+                //    $("[role='right-nav']").height($(window).height())
+                //}, false);
 
                 //setup animation
                 var animation = $animateCss(element, {

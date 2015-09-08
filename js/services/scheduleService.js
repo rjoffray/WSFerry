@@ -45,6 +45,16 @@ app.service('scheduleService',function($http,$q) {
                 return promise;
             }
         },
+        getAlerts : function(){
+            var url = this.api_root + this.api_schedules + "/alerts?callback=JSON_CALLBACK&apiaccesscode=" + this.api_key,
+                promise = null;
+            if (promise) {
+                return promise;
+            } else {
+                promise = $http.jsonp(url);
+                return promise;
+            }
+        },
         getTerminalsAndMatesByRoute : function(routeId){
             var url = this.api_root + this.api_schedules + "/terminalsandmates/"+this.trip_date+"/"+routeId+"?callback=JSON_CALLBACK&apiaccesscode=" + this.api_key,
                 promise = null;
@@ -65,16 +75,12 @@ app.service('scheduleService',function($http,$q) {
                 return promise;
             }
         },
-        getRoutes : function(DepartingTerminalID,ArrivingTerminalID){
+        getRoutes : function(){
             var url = null,
                 promise=null;
-            if(DepartingTerminalID == null && ArrivingTerminalID == null) {
-                //usage: this.getRoutes()
-                url = this.api_root + this.api_schedules + "/terminalsandmates/" + this.trip_date + "?callback=JSON_CALLBACK&apiaccesscode=" + this.api_key;
-            }else{
-                //usage: this.getRoutes("9","14")
-                url = this.api_root + this.api_schedules + "/terminalsandmates/" + this.trip_date + "/" +DepartingTerminalID +"/" + ArrivingTerminalID +"?callback=JSON_CALLBACK&apiaccesscode=" + this.api_key;
-            }
+
+                url = this.api_root + this.api_schedules + "/routes/" + this.trip_date + "?callback=JSON_CALLBACK&apiaccesscode=" + this.api_key;
+
             if (promise) {
                 return promise;
             } else {
@@ -134,25 +140,28 @@ app.service('scheduleService',function($http,$q) {
                 console.log("Get New Data: ",moment(response.data).unix().valueOf() > storedFlushDate)
                 if(moment(response.data).unix().valueOf() > storedFlushDate ) {
                     _self.scheduleServices['FlushDate'] = moment(response.data).unix().valueOf();
-                    _self.getTerminals().then(function (response) {
-                        _self.scheduleServices['Terminals'] = response.data;
-                        _self.getTerminalsAndMates().then(function (response) {
-                            _self.scheduleServices['TerminalsAndMates'] = response.data;
-                            _self.getRoutes().then(function (response) {
-                                _self.scheduleServices['Routes'] = response.data;
-                                //deferred.resolve(_self.scheduleServices);
-                                _self.getRoutesHavingServiceDisruptions().then(function (response) {
-                                    _self.scheduleServices['RoutesHavingServiceDisruptions'] = response.data;
+                    _self.getAlerts().then(function (response) {
+                        _self.scheduleServices['Alerts'] = response.data;
+                        _self.getTerminals().then(function (response) {
+                            _self.scheduleServices['Terminals'] = response.data;
+                            _self.getTerminalsAndMates().then(function (response) {
+                                _self.scheduleServices['TerminalsAndMates'] = response.data;
+                                _self.getRoutes().then(function (response) {
+                                    _self.scheduleServices['Routes'] = response.data;
                                     //deferred.resolve(_self.scheduleServices);
-                                    _self.getActiveSeasons().then(function (response) {
-                                        _self.scheduleServices['ActiveSeasons'] = response.data;
+                                    _self.getRoutesHavingServiceDisruptions().then(function (response) {
+                                        _self.scheduleServices['RoutesHavingServiceDisruptions'] = response.data;
                                         //deferred.resolve(_self.scheduleServices);
-                                        _self.getValidDateRange().then(function (response) {
-                                            _self.scheduleServices['ValidDateRange'] = response.data;
-                                            _self.scheduleServices.ValidDateRange.DateFrom = moment(_self.scheduleServices.ValidDateRange.DateFrom).format();
-                                            _self.scheduleServices.ValidDateRange.DateThru = moment(_self.scheduleServices.ValidDateRange.DateThru).format();
-                                            amplify.store(_self.api_schedule_cache_key, _self.scheduleServices);
-                                            deferred.resolve(_self.scheduleServices);
+                                        _self.getActiveSeasons().then(function (response) {
+                                            _self.scheduleServices['ActiveSeasons'] = response.data;
+                                            //deferred.resolve(_self.scheduleServices);
+                                            _self.getValidDateRange().then(function (response) {
+                                                _self.scheduleServices['ValidDateRange'] = response.data;
+                                                _self.scheduleServices.ValidDateRange.DateFrom = moment(_self.scheduleServices.ValidDateRange.DateFrom).format();
+                                                _self.scheduleServices.ValidDateRange.DateThru = moment(_self.scheduleServices.ValidDateRange.DateThru).format();
+                                                amplify.store(_self.api_schedule_cache_key, _self.scheduleServices);
+                                                deferred.resolve(_self.scheduleServices);
+                                            });
                                         });
                                     });
                                 });

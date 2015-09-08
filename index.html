@@ -93,7 +93,7 @@
     </ul>
 </nav>
 <div class="offcanvas">
-    <div role="main">
+    <div role="main" ng-class="{'timesMain':viewClass=='times'}">
         <div class="list-group-item navbar-header"><span ng-if="viewClass == 'times'" class="pull-left fa fa-exchange" ng-click="reverseSchedule()"></span><span class="pull-right fa fa-bars" ng-click="openNav()"></span>{{menuTitle}}</div>
         <div class="list-group-item list-heading top-nav" ng-if="showListHeader" ng-bind-html="listHeaderMessage | unsafe"></div>
 

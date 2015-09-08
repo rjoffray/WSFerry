@@ -275,7 +275,7 @@ app.controller('applicationController', ['$rootScope',
         });
         scheduleService.getScheduleServices().then(function (response) {
             $scope.scheduleApi = response;
-            //console.log("Schedule service promise returned: ",response);
+            console.log("Schedule service promise returned: ",response);
         }, function (error) {
             //$scope.terminalApi =  error;
             console.log("Error: ", error);

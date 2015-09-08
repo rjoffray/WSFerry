@@ -28,14 +28,12 @@ body {
 body *:focus {
   outline: 0;
 }
-body > div {
-  -webkit-transition: all 1s ease-in-out;
-}
 [role="main"],
 [role="right-nav"] {
   transition: .3s all ease;
   width: 100%;
   position: absolute;
+  top: 0;
 }
 [role="main"] {
   position: absolute;
@@ -45,15 +43,11 @@ body > div {
   right: 0;
   z-index: 940;
 }
-.active-nav [role="main"] {
-  left: -80%;
-}
 [role="main"] .timesNav {
   margin-top: 6px;
 }
-[role="main"] .timesNav input {
-  background-color: #ffffff;
-  height: 32px;
+.active-nav [role="main"] {
+  left: -80%;
 }
 [role="main"] .list-heading,
 [role="main"] .list-footer {
@@ -65,7 +59,7 @@ body > div {
   background-color: rgba(240, 248, 255, 0.7);
   color: darkgray;
   height: 40px;
-  padding: .1rem 1rem .3rem 1rem;
+  padding: .08rem 1rem .3rem 1rem;
   text-align: center;
   line-height: 36px;
 }
@@ -264,7 +258,8 @@ body > div {
 }
 [role="right-nav"] {
   position: absolute;
-  right: -100%;
+  top: 0;
+  right: -200%;
   z-index: 1000;
   background-color: white;
 }
@@ -374,4 +369,15 @@ body > div {
 .map.modal .modal-dialog .modal-content .modal-body .angular-google-map .angular-google-map-container,
 .cameras.modal .modal-dialog .modal-content .modal-body .angular-google-map .angular-google-map-container {
   height: 100%;
+}
+.input-group {
+  margin-top: 2px;
+}
+.input-group .input-group-addon {
+  padding: .260rem .75rem!important;
+  background-color: #ffffff;
+}
+.input-group .form-control {
+  padding: .240rem .75rem!important;
+  background-color: #ffffff;
 }
