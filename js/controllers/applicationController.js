@@ -31,21 +31,30 @@ app.controller('applicationController', ['$rootScope',
         $scope.showModalMap = false;
         $scope.cameras = [];
         $scope.setCameras = function(departing,arriving){
-
+            $scope.cameras = [];
             var cameras2 = [];
+            var timestamp = moment().unix();
+            //alert(timestamp)
             _.forEach(cameras,function(v,k){
                 if (k == departing || k == arriving) {
                     _.forEach(v,function(v2,k2){
                         var temp = {};
                         temp.terminal=k2.toString();
-                        temp.camera=v2;
+                        temp.camera=v2 +  "?" + timestamp;
                         cameras2.push(temp)
                     })
                 }
             });
 
-            $scope.cameras = cameras2;
+            return cameras2;
         }
+        $scope.refreshCameras = function(){
+
+            $scope.cameras = $scope.setCameras($routeParams.departingId,$routeParams.arrivingId);
+        }
+        $scope.$on("setCameras",function(){
+            $scope.cameras = $scope.setCameras($routeParams.departingId,$routeParams.arrivingId);
+        });
         $scope.setTitle = function (title) {
             $scope.menuTitle = title;
 
@@ -55,13 +64,16 @@ app.controller('applicationController', ['$rootScope',
         }
         $scope.setListHeader = function (show, title) {
             $scope.showListHeader = show;
-            $scope.listHeaderMessage = title;
-            if (show) {
+            if(title !='') {
+                $scope.listHeaderMessage = title;
+            }
+            if (show && title !='') {
                 $(".view").addClass("with-list-head");
             } else {
                 $(".view").removeClass("with-list-head");
             }
         }
+
         $scope.setDatePicker = function () {
             $timeout(function () {
                 $('.datepicker').datepicker({
@@ -168,7 +180,7 @@ app.controller('applicationController', ['$rootScope',
 
         $('#camerasModal').on('show.bs.modal', function () {
             //alert("cameras")
-            //$scope.cameras = $scope.setCameras($routeParams.departingId,$routeParams.arrivingId);
+            $scope.cameras = $scope.setCameras($routeParams.departingId,$routeParams.arrivingId);
 
         });
         $('#mapModal').on('shown.bs.modal', function () {

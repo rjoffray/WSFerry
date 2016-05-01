@@ -4,11 +4,12 @@
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <div class="input-group input-group-sm" ng-click="$event.stopPropagation()">
-                                          <span class="input-group-addon">
-                                              <span class="fa fa-ticket" ng-click="showDatePicker()"></span>
-                                           </span>
-                <input type="text" class="form-control ticketForm" ng-model="ticketId" placeholder="Enter a ticket #"/>
+            <div class="input-group input-group-sm input-wrapper">
+                <input type="text" class="form-control ticketForm" ng-model="ticketId"  value="5123410116262536621495"  />
+                                          <div class="ticketLookupButton input-group-addon" ng-click="ticketLookup(ticketId)">
+                                              <span class="fa fa-ticket"></span><span class="fa fa-label">Lookup</span>
+                                           </div>
+
             </div>
         </div>
     </div>
@@ -16,6 +17,7 @@
         <div class="col-xs-12">&nbsp;</div>
     </div>
 </div>
+<img src="./images/wave2goTicket.png" class="wave2goTicket img-responsive" alt="wave2goTicket" />
 <ul class="ticket-list list-unstyled list-group">
     <li class="list-group-item" ng-repeat="t in ticketData.History" >
         <h6 class="list-group-item-heading">{{t.Description}}</h6>
