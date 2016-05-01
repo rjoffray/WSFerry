@@ -1,3 +1,4 @@
+<script type="text/javascript" src="/js/libs/jsBarcode.js" />
 <div class="container-fluid">
     <div class="row filler">
         <div class="col-xs-12">&nbsp;</div>
@@ -11,13 +12,17 @@
                                            </div>
 
             </div>
+
         </div>
     </div>
     <div class="row filler">
         <div class="col-xs-12">&nbsp;</div>
     </div>
 </div>
-<img src="./images/wave2goTicket.png" class="wave2goTicket img-responsive" alt="wave2goTicket" />
+<div class="ticketWrapper">
+    <img src="./images/wave2goTicket.png" class="wave2goTicket img-responsive" alt="wave2goTicket" />
+    <img id="barcode"/>
+</div>
 <ul class="ticket-list list-unstyled list-group">
     <li class="list-group-item" ng-repeat="t in ticketData.History" >
         <h6 class="list-group-item-heading">{{t.Description}}</h6>
@@ -25,3 +30,4 @@
 
      </li>
 </ul>
+

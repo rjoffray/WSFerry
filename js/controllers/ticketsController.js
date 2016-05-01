@@ -32,6 +32,7 @@ app.controller("ticketsController",["$scope","$http",'$routeParams','$location',
         $http.jsonp($scope.ticketUrl).then(function (response) {
             console.log("%&%&%&%&%&%&%&%&%: ", response.data)
             $scope.ticketData = response.data;
+            $("#barcode").JsBarcode($routeParams.ticketId);
         }, function (error) {
             console.log("ERROR: ", error)
         });

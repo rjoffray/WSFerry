@@ -113,8 +113,13 @@ body *:focus {
 [role="main"] .view.tickets .input-wrapper .ticketLookupButton:hover {
   background-color: #dedede;
 }
-[role="main"] .view.tickets .input-wrapper .wave2goTicket {
+[role="main"] .view.tickets .ticketWrapper {
   max-width: 480px;
+}
+[role="main"] .view.tickets .ticketWrapper #barcode {
+  margin-top: -105px;
+  margin-left: 10px;
+  width: 40%;
 }
 [role="main"] .view.with-list-head {
   padding-top: 84px;
