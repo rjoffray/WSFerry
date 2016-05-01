@@ -122,6 +122,9 @@ body *:focus {
   margin-left: 10px;
   width: 40%;
 }
+[role="main"] .view.tickets .ticket-list {
+  margin-bottom: 60px;
+}
 [role="main"] .view.with-list-head {
   padding-top: 84px;
 }
