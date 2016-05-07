@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95f9deef-d062-4d56-ad69-f30ea2d17966" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../WSFSchedule/images/wave2goTicket.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../WSFSchedule/.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../WSFSchedule/.idea/deployment.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../WSFSchedule/.idea/webServers.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../WSFSchedule/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../WSFSchedule/js/libs/JsBarcode.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../WSFSchedule/.gitignore" afterPath="$PROJECT_DIR$/../WSFSchedule/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../WSFSchedule/.idea/misc.xml" afterPath="$PROJECT_DIR$/../WSFSchedule/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../WSFSchedule/css/main.css" afterPath="$PROJECT_DIR$/../WSFSchedule/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../WSFSchedule/css/main.less" afterPath="$PROJECT_DIR$/../WSFSchedule/css/main.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../WSFSchedule/index.html" afterPath="$PROJECT_DIR$/../WSFSchedule/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../WSFSchedule/js/app.js" afterPath="$PROJECT_DIR$/../WSFSchedule/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../WSFSchedule/js/controllers/applicationController.js" afterPath="$PROJECT_DIR$/../WSFSchedule/js/controllers/applicationController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../WSFSchedule/js/controllers/ticketsController.js" afterPath="$PROJECT_DIR$/../WSFSchedule/js/controllers/ticketsController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../WSFSchedule/js/controllers/timesController.js" afterPath="$PROJECT_DIR$/../WSFSchedule/js/controllers/timesController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../WSFSchedule/partials/tickets.html" afterPath="$PROJECT_DIR$/../WSFSchedule/partials/tickets.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../WSFSchedule/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../WSFSchedule/.idea/workspace.xml" />
     </list>
     <ignored path="www.wsfscheduleapp.com.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -253,7 +238,7 @@
       <updated>1459648981045</updated>
       <workItem from="1459648982446" duration="1119000" />
       <workItem from="1462657627938" duration="991000" />
-      <workItem from="1462658887300" duration="1327000" />
+      <workItem from="1462658887300" duration="1390000" />
     </task>
     <task id="LOCAL-00001" summary="added barcode js files&#10;removed idea info">
       <created>1462660006445</created>
@@ -262,15 +247,22 @@
       <option name="project" value="LOCAL" />
       <updated>1462660006445</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml&#10;">
+      <created>1462660273378</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1462660273378</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3437000" />
+    <option name="totallyTimeSpent" value="3500000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="20" y="43" width="2043" height="941" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25287357" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -278,7 +270,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928312" sideWeight="0.50574714" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928312" sideWeight="0.49825087" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32928312" sideWeight="0.49425286" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32928312" sideWeight="0.49425286" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928312" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
