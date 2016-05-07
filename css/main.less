@@ -118,22 +118,35 @@ body {
 	  }
 	}
 	&.tickets {
+	  padding-top:44px;
 	  .input-wrapper{
-		border:1px solid lightgray;
-		//.input-group {
-		//  margin: 4px auto 0 auto;
-		//  width: 230px;
-		//  * {
-		//	border: 0;
-		//  }
-		//  .input-group-addon {
-		//	background-color: transparent;
-		//	padding: 4px 6px;
-		//
-		//  }
-		//
-		//}
+
+		  .ticketLookupButton{
+			  cursor:pointer;
+			  &:hover{
+				  background-color:#dedede;
+			  }
+		  }
+
 	  }
+		.ticketWrapper{
+
+			.wave2goTicket{
+				width:100%;
+				max-width:667px;
+
+
+			}
+			#barcode{
+				margin-top:-105px;
+				margin-left:10px;
+				width:40%;
+			}
+		}
+		.ticket-list{
+			margin-bottom:60px;
+		}
+
 	}
 	&.with-list-head {
 	  padding-top: 40px + 44px;

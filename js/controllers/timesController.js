@@ -1,7 +1,7 @@
 app.controller('timesController',['$scope', '$routeParams', '$location', '$resource','scheduleService','vesselService','$timeout','$window','$anchorScroll','$document', function($scope, $routeParams, $location, $resource,scheduleService,vesselService,$timeout,$window,$anchorScroll,$document) {
     //console.log("routeParams: ",$routeParams)
     $scope.setViewClass("times");
-    $scope.setCameras($routeParams.departingId,$routeParams.arrivingId);
+    $scope.$emit("setCameras");
     $scope.departingId = $routeParams.departingId;
     $scope.arrivingId = $routeParams.arrivingId;
     //$scope.scheduleDate = moment($routeParams.scheduleDate).format('dddd, MMM DD, YYYY') || moment().format('dddd, MMM DD, YYYY');

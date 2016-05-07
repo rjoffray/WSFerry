@@ -20,26 +20,26 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
 
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js"></script>
 
-    <script src="https://code.angularjs.org/1.4.4/angular.min.js"></script>
-    <script src="https://code.angularjs.org/1.4.4/angular-resource.min.js"></script>
-    <script src="https://code.angularjs.org/1.4.4/angular-route.min.js"></script>
-    <script src="https://code.angularjs.org/1.4.4/angular-animate.min.js"></script>
-    <script src="https://code.angularjs.org/1.4.4/angular-touch.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.1.6/angular-google-maps.min.js"></script>
+    <script src="http://code.angularjs.org/1.5.5/angular.min.js"></script>
+    <script src="http://code.angularjs.org/1.5.5/angular-resource.min.js"></script>
+    <script src="http://code.angularjs.org/1.5.5/angular-route.min.js"></script>
+    <script src="http://code.angularjs.org/1.5.5/angular-animate.min.js"></script>
+    <script src="http://code.angularjs.org/1.5.5/angular-touch.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-google-maps/2.1.6/angular-google-maps.min.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?language=en"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-scroll/0.7.2/angular-scroll.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-scroll/0.7.2/angular-scroll.min.js"></script>
 
 
 
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>-->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.4.0/moment-timezone.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/amplifyjs/1.1.2/amplify.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.4.0/moment-timezone.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/amplifyjs/1.1.2/amplify.min.js"></script>
     <link rel="stylesheet" href="css/main.css"/>
     <!--<script  src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.7.5/less.js"></script>-->
 
@@ -102,7 +102,7 @@
         <div class="list-group-item list-heading top-nav button-group"  ng-if="showSubNav">
             <div class="btn-group btn-group-sm" role="group" aria-label="Buttons">
                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#mapModal">map</button>
-                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#camerasModal">cameras</button>
+                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#camerasModal" ng-click="refreshCameras()">cameras</button>
                 <button type="button" class="btn btn-secondary">fares</button>
                 <button type="button" class="btn btn-secondary">alerts</button>
             </div>
@@ -152,7 +152,7 @@
                 <ul class="list-group">
                     <li class="list-group-item" ng-repeat="c in cameras">
                         <h4>{{c.terminal}}</h4>
-                        <div><img src="{{c.camera}}" class="img-responsive"/></div>
+                        <div><img  ng-src="{{c.camera}}" class="img-responsive"/></div>
                     </li>
                 </ul>
             </div>

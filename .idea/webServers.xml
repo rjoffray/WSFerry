@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="e29914a6-1033-4c0e-b331-7084deea09ae" name="wsfschedule.com" url="http://www.wsfscheduleapp.com">
+        <fileTransfer host="wsfscheduleapp.com" port="22" rootFolder="/var/www/www.wsfscheduleapp.com/htdocs" accessType="SFTP" password="dff9dfdadfcbdfdedfdfdfc6dfcbdf98df9adf9bdf9c" username="rjoffray">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

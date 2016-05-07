@@ -104,8 +104,26 @@ body *:focus {
 [role="main"] .view.times .list-group-item {
   pointer-events: none;
 }
-[role="main"] .view.tickets .input-wrapper {
-  border: 1px solid lightgray;
+[role="main"] .view.tickets {
+  padding-top: 44px;
+}
+[role="main"] .view.tickets .input-wrapper .ticketLookupButton {
+  cursor: pointer;
+}
+[role="main"] .view.tickets .input-wrapper .ticketLookupButton:hover {
+  background-color: #dedede;
+}
+[role="main"] .view.tickets .ticketWrapper .wave2goTicket {
+  width: 100%;
+  max-width: 667px;
+}
+[role="main"] .view.tickets .ticketWrapper #barcode {
+  margin-top: -105px;
+  margin-left: 10px;
+  width: 40%;
+}
+[role="main"] .view.tickets .ticket-list {
+  margin-bottom: 60px;
 }
 [role="main"] .view.with-list-head {
   padding-top: 84px;
