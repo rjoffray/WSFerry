@@ -5,7 +5,7 @@
       <paths name="wsfschedule.com">
         <serverdata>
           <mappings>
-            <mapping deploy="/var/www/www.wsfscheduleapp.com/htdocs" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/var/www/www.wsfscheduleapp.com/htdocs" local="$PROJECT_DIR$/../WSFSchedule" web="/" />
           </mappings>
         </serverdata>
       </paths>
