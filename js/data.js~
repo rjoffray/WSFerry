@@ -75,9 +75,8 @@ var cameras = {
     },
     "22": {
         "Vashon::Holding South": "http://images.wsdot.wa.gov/wsf/vashon/HoldingSouth.jpg",
-	"Vashon::Bunker North": "http://images.wsdot.wa.gov/wsf/vashon/VSHvc00001.jpg",
-        "Vashon::Bunker South": "http://images.wsdot.wa.gov/wsf/vashon/VSHvc00002.jpg",
-        "Vashon::112th North": "http://images.wsdot.wa.gov/wsf/vashon/VSHvc00004.jpg",
-        "Vashon::112th South": "http://images.wsdot.wa.gov/wsf/vashon/VSHvc00002.jpg"
+        "Vashon::Bunker South": "http://images.wsdot.wa.gov/wsf/vashon//VSHvc00002_wts.jpg",
+        "Vashon::112th North": "http://images.wsdot.wa.gov/wsf/vashon//VSHvc00004_wts.jpg",
+        "Vashon::112th South": "http://images.wsdot.wa.gov/wsf/vashon//VSHvc00003_wts.jpg"
     }
 }
