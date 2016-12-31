@@ -30,8 +30,11 @@ var cameras = {
         "Edmonds::Pine": "http://images.wsdot.wa.gov/wsf/edmonds/104pine.jpg"
     },
     "9": {
-        "Fauntleroy::Terminal": "http://images.wsdot.wa.gov/wsf/fauntleroy/terminal/fauntleroy.jpg",
-        "Fauntleroy:Cloverdale": "http://www.seattle.gov/trafficcams/images/Fauntleroy_Cloverdale.jpg?1367369820390"
+	"Fauntleroy::Holding": "http://images.wsdot.wa.gov/wsf/fauntleroy/terminal/fauntleroy.jpg",
+	"Fauntleroy::Way North": "http://images.wsdot.wa.gov/wsf/fauntleroy/terminal/fauntterminal.jpg",
+	"Fauntleroy::Trenton North": "http://images.wsdot.wa.gov/wsf/fauntleroy/terminal/faunttrenton.jpg",
+        "Fauntleroy::Lincoln Park North": "http://images.wsdot.wa.gov/wsf/fauntleroy/terminal/fauntlincoln.jpg?1483217261869",
+        "Fauntleroy:Cloverdale": "http://www.seattle.gov/trafficcams/images/Fauntleroy_Cloverdale.jpg"
     },
     "10": {
         "Friday Harbor::Terminal": "http://www.islandcam.com/camimages/ffcam.jpg"
