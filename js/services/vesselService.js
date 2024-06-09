@@ -1,8 +1,8 @@
 app.service('vesselService',function($http,$q) {
     return ({
-        api_root: "http://www.wsdot.wa.gov/ferries/api",
+	    api_root: "http://www.wsdot.wa.gov/Ferries/API",
         api_key: "beae0283-3493-4760-9997-04b1c32a23e2",
-        api_terminals: "/vessels/rest",
+        api_terminals: "/Vessels/rest",
         api_vessel_cache_key: "vesselCache",
         getCacheFlushDate : function(){
             var url = this.api_root + this.api_terminals + "/cacheflushdate?callback=JSON_CALLBACK&apiaccesscode=" + this.api_key,

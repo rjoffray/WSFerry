@@ -151,11 +151,11 @@ body *:focus {
   color: #000 !important;
 }
 [role="main"] .view .list-group .list-group-item:active.boat-gone {
-  color: black;
+  color: lightgray;
 }
 [role="main"] .view .list-group .list-group-item:active.boat-gone .pm-color,
 [role="main"] .view .list-group .list-group-item:active.boat-gone .am-color {
-  color: black;
+  color: lightgray;
 }
 [role="main"] .view .list-group .list-group-item:link {
   background-color: medium;
@@ -168,7 +168,10 @@ body *:focus {
   font-size: 24px !important;
 }
 [role="main"] .view .list-group .list-group-item .am-color {
-  color: orange;
+  color: darkorange;
+}
+[role="main"] .view .list-group .list-group-item.active  .am-color{
+  color: darkblue;
 }
 [role="main"] .view .list-group .list-group-item .pm-color {
   color: darkblue;
@@ -181,7 +184,7 @@ body *:focus {
   color: lightgray;
 }
 [role="main"] .view .list-group .list-group-item.active {
-  background-color: lightblue;
+  background-color: rgba(102,  153,  204, 0.31);
   border: 0;
 }
 [role="main"] .view .list-group .list-group-item .annotation {

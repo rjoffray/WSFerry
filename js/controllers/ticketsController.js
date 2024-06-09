@@ -25,11 +25,18 @@ app.controller("ticketsController",["$scope","$http",'$routeParams','$location',
     $scope.showListHeader = false;
     $scope.setSubNav(false);
     console.log("Route Params",$routeParams)
+
     if($routeParams.ticketId != null) {
         $scope.ticketUrl = "http://wsf.myclient.com/tickets/lookup-iphone.php?tid="+$routeParams.ticketId+"&o=json&callback=JSON_CALLBACK";
         console.log($scope.ticketUrl)
 
-        $http.jsonp($scope.ticketUrl).then(function (response) {
+        $http({ method: 'JSONP',
+	        	url:$scope.ticketUrl,
+	        	headers: {
+		        	'User': 'WSF webapp v1.0',
+		        	'Content-Type': 'application/json'
+	        	}
+	        }).then(function (response) {
             console.log("%&%&%&%&%&%&%&%&%: ", response.data)
             $scope.ticketData = response.data;
             $("#barcode").JsBarcode($routeParams.ticketId);
