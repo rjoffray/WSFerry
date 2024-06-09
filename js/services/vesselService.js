@@ -1,6 +1,6 @@
 app.service('vesselService',function($http,$q) {
     return ({
-	    api_root: "http://www.wsdot.wa.gov/Ferries/API",
+	    api_root: "//www.wsdot.wa.gov/Ferries/API",
         api_key: "beae0283-3493-4760-9997-04b1c32a23e2",
         api_terminals: "/Vessels/rest",
         api_vessel_cache_key: "vesselCache",
