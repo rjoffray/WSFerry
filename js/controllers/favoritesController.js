@@ -2,7 +2,7 @@ app.controller('favoritesController',['$scope', '$routeParams', '$location', '$r
     $scope.setViewClass("favorites");
     $scope.favorites = amplify.store("favorites");
     $scope.setTitle("WSF Schedule");
-    $scope.setListHeader(true,'Favorite Routes');
+    $scope.setListHeader(true,'Saved Routes');
     $scope.showListHeader = true;
     $scope.setSubNav(false);
 

@@ -85,7 +85,7 @@
         </li>
         <li class="list-group-item" ng-click='setViewClass("favorites");goToUrl("/favorites")'>
             <span class="pull-left fa fa-heart"></span>
-            Favorite Routes
+            Saved Routes
         </li>
         <!-- <li class="list-group-item" ng-click='goToUrl("/tickets")'>
             <span class="pull-left fa fa-ticket"></span>
@@ -108,7 +108,7 @@
                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#camerasModal" ng-click="refreshCameras()">cameras</button>
                 <!-- <button type="button" class="btn btn-secondary">fares</button>
                 <button type="button" class="btn btn-secondary">alerts</button> -->
-                <button type="button" class="btn btn-secondary" ng-click="setFavorite();goToUrl('/favorites')">save to favorites</button>
+                <button type="button" class="btn btn-secondary" ng-click="setFavorite();goToUrl('/favorites')">save</button>
             </div>
         </div>
         <div ng-view class="view {{viewClass}} slide">
