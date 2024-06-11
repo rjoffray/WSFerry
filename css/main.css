@@ -193,6 +193,8 @@ body *:focus {
   text-align: right;
   line-height: 100%;
   vertical-align: middle;
+  color: darkblue;
+  padding-right: 1rem;
 }
 [role="main"] .navbar-header,
 [role="main"] .navbar-footer {
