@@ -208,7 +208,7 @@ body *:focus {
   color: white;
   background-color: #6699cc;
   border-color: #6699cc;
-  padding: .5rem 1rem .6rem 1.25rem;
+  padding: .5rem 1rem .6rem 2.25rem;
 }
 [role="main"] .navbar-header .fa,
 [role="main"] .navbar-footer .fa {

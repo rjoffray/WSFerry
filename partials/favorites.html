@@ -1,0 +1,8 @@
+<ul class="list-unstyled list-group">
+    <li class="list-group-item" ng-repeat="(key, value) in favorites" >
+        <div ng-click="setViewClass('times');goTimes(value.departingId, value.arrivingId)">
+            <span class="fa fa-angle-right pull-right" ></span>
+            <span class="fa fa-trash  pull-left" ng-click="removeFavorite(key)"></span> {{key}}
+        </div>
+    </li>
+</ul>

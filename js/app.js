@@ -38,9 +38,9 @@
                         templateUrl: 'partials/tickets.html',
                         controller: 'ticketsController'
                     }).
-                    when('/tickets', {
-                        templateUrl: 'partials/tickets.html',
-                        controller: 'ticketsController'
+                    when('/favorites', {
+                        templateUrl: 'partials/favorites.html',
+                        controller: 'favoritesController'
                     }).
                     otherwise({
                         redirectTo: 'departing'

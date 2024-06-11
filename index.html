@@ -50,6 +50,7 @@
     <script src="js/services/vesselService.js"></script>
     <script src="js/controllers/applicationController.js"></script>
     <script src="js/controllers/departingController.js"></script>
+    <script src="js/controllers/favoritesController.js"></script>
     <script src="js/controllers/arrivingController.js"></script>
     <script src="js/controllers/timesController.js"></script>
     <script src="js/controllers/ticketsController.js"></script>
@@ -80,18 +81,18 @@
             <span class="pull-left fa fa-home"></span>
             Departure Terminals
         </li>
-        <li class="list-group-item">
+        <li class="list-group-item" ng-click='setViewClass("favorites");goToUrl("/favorites")'>
             <span class="pull-left fa fa-heart"></span>
             Favorite Terminals
         </li>
-        <li class="list-group-item" ng-click='goToUrl("/tickets")'>
+        <!-- <li class="list-group-item" ng-click='goToUrl("/tickets")'>
             <span class="pull-left fa fa-ticket"></span>
             Ticket Lookup
         </li>
         <li class="list-group-item">
             <span class="pull-left fa fa-gear"></span>
             Preferences
-        </li>
+        </li> -->
     </ul>
 </nav>
 <div class="offcanvas">
@@ -103,8 +104,9 @@
             <div class="btn-group btn-group-sm" role="group" aria-label="Buttons">
                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#mapModal">map</button>
                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#camerasModal" ng-click="refreshCameras()">cameras</button>
-                <button type="button" class="btn btn-secondary">fares</button>
-                <button type="button" class="btn btn-secondary">alerts</button>
+                <!-- <button type="button" class="btn btn-secondary">fares</button>
+                <button type="button" class="btn btn-secondary">alerts</button> -->
+                <button type="button" class="btn btn-secondary" ng-click="setFavorite();goToUrl('/favorites')">save to favorites</button>
             </div>
         </div>
         <div ng-view class="view {{viewClass}} slide">

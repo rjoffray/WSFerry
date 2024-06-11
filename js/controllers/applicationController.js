@@ -9,7 +9,7 @@ app.controller('applicationController', ['$rootScope',
     'vesselService',
     '$location',
     '$routeParams',
-    '$anchorScroll','uiGmapGoogleMapApi','$compile', function ($rootScope, $http,$log, $scope, $timeout, $window, terminalService, scheduleService, vesselService, $location, $routeParams, $anchorScroll,uiGmapGoogleMapApi,$compile) {
+    '$anchorScroll','uiGmapGoogleMapApi','$compile', function ($rootScope,$http,$log, $scope, $timeout, $window, terminalService, scheduleService, vesselService, $location, $routeParams, $anchorScroll,uiGmapGoogleMapApi,$compile) {
 
         $rootScope.$on("$locationChangeEnd", function (event, current, previous) {
             //alert("change start")
@@ -59,9 +59,7 @@ app.controller('applicationController', ['$rootScope',
             $scope.menuTitle = title;
 
         }
-        $scope.setViewClass = function (viewClass) {
-            $scope.viewClass = viewClass;
-        }
+
         $scope.setListHeader = function (show, title) {
             $scope.showListHeader = show;
             if(title !='') {
@@ -364,5 +362,23 @@ app.controller('applicationController', ['$rootScope',
         //    }
         //
         //});
+        $scope.departingId = $routeParams.departingId;
+        console.log("$routeParams",$routeParams)
+        $scope.arrivingId = $routeParams.arrivingId;
+        $scope.favorites = {}
+        console.log("favorites: ",$scope.favorites)
+        $scope.setFavorite = function() {
+            if(!amplify.store("favorites")){
+                amplify.store("favorites",$scope.favorites)
+            } else {
+                $scope.favorites = amplify.store("favorites");
+            }
+            
+            
+            $scope.favorites[$scope.menuTitle] = $routeParams
+            amplify.store("favorites", $scope.favorites)
+            
+        }
+    
 
     }]);
