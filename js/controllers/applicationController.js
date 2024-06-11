@@ -114,7 +114,7 @@ app.controller('applicationController', ['$rootScope',
         }
         $scope.initMap = function(){
             $scope.bounds = $scope.getMapBounds();
-            console.log("bounds: ",bounds)
+            //console.log("bounds: ",bounds)
 
         }
         uiGmapGoogleMapApi.then(function(maps) {
@@ -209,7 +209,7 @@ app.controller('applicationController', ['$rootScope',
         $scope.reverseSchedule = function () {
             //console.log();
             var pathArray = $location.path().split("/");
-            console.log(pathArray)
+            //console.log(pathArray)
             if (pathArray[4]) {
                 $location.path(pathArray[1] + "/" + pathArray[3] + "/" + pathArray[2] + "/" + pathArray[4])
             } else {
@@ -219,8 +219,8 @@ app.controller('applicationController', ['$rootScope',
         }
         angular.element(".offcanvas").on("click", function (event) {
             var _self = this;
-            console.log(event, event.offsetX, $("[role=right-nav]")[0].offsetWidth);
-            console.log("clicked to left:", event.target.className)
+            //console.log(event, event.offsetX, $("[role=right-nav]")[0].offsetWidth);
+            //console.log("clicked to left:", event.target.className)
             if ((event.offsetX < $("[role=right-nav]")[0].offsetWidth) && event.target.className == "offcanvas") {
 
                 $scope.closeNav();
@@ -253,13 +253,13 @@ app.controller('applicationController', ['$rootScope',
         $scope.goBack = function () {
             $timeout(function () {
                 $window.history.back();
-                console.log("back")
+                //console.log("back")
             }, 0);
         }
         $scope.goForward = function () {
             $timeout(function () {
                 $window.history.forward();
-                console.log("forward")
+                //console.log("forward")
             }, 0);
         }
         $scope.goToUrl = function (url) {
@@ -281,41 +281,41 @@ app.controller('applicationController', ['$rootScope',
             //console.log("terminalApi promise returned: ",response);
         }, function (error) {
             //$scope.terminalApi =  error;
-            console.log("Error: ", error);
+            //console.log("Error: ", error);
         });
         scheduleService.getScheduleServices().then(function (response) {
             $scope.scheduleApi = response;
-            console.log("Schedule service promise returned: ",response);
+            //console.log("Schedule service promise returned: ",response);
         }, function (error) {
             //$scope.terminalApi =  error;
-            console.log("Error: ", error);
+            //console.log("Error: ", error);
         });
         scheduleService.getSchedule("9", "22").then(function (response) {
             $scope.FauntleroyVashon = response.data;
             //console.log("Fauntleroy - Vashon Schedule service promise returned: ",$scope.FauntleroyVashon);
         }, function (error) {
             //$scope.terminalApi =  error;
-            console.log("Error: ", error);
+            //console.log("Error: ", error);
         });
         vesselService.getVesselLocations().then(function(response){
             $scope.vesselsApi =  response.data;
             //console.log("$$$$$$$$$$$$$$$$$$ Vessel Response $$$$$$$$$$$$$$",response.data)
         },function(error){
             //$scope.terminalApi =  error;
-            console.log("Error: ",error);
+            //console.log("Error: ",error);
         });
         $scope.$watch("terminalApi", function (newData, oldData) {
             if (newData != oldData) {
                 $scope.Terminals = newData.Basics;
                 $scope.terminalApi = newData;
-                console.log("Terminal service watched data! ", newData)
+                //console.log("Terminal service watched data! ", newData)
             }
 
         });
         $scope.$watch("vesselsApi", function (newData, oldData) {
             if (newData != oldData) {
                 $scope.vesselsApi = newData;
-                console.log("Vessels service watched data! ", newData)
+                //console.log("Vessels service watched data! ", newData)
             }
 
         });
@@ -327,7 +327,7 @@ app.controller('applicationController', ['$rootScope',
                 var days = b.diff(a, 'days');
                 $scope.validScheduleStartDate = "0d";
                 $scope.validScheduleEndDate = "+" + (days) + "d";
-                console.log("Schedule service watched data! ", newData)
+                //console.log("Schedule service watched data! ", newData)
             }
 
         });
@@ -363,10 +363,10 @@ app.controller('applicationController', ['$rootScope',
         //
         //});
         $scope.departingId = $routeParams.departingId;
-        console.log("$routeParams",$routeParams)
+        //console.log("$routeParams",$routeParams)
         $scope.arrivingId = $routeParams.arrivingId;
         $scope.favorites = {}
-        console.log("favorites: ",$scope.favorites)
+        //console.log("favorites: ",$scope.favorites)
         $scope.setFavorite = function() {
             if(!amplify.store("favorites")){
                 amplify.store("favorites",$scope.favorites)
