@@ -7,10 +7,14 @@ app.controller('favoritesController',['$scope', '$routeParams', '$location', '$r
     $scope.setSubNav(false);
 
     $scope.removeFavorite = function(key) {
-        console.log($scope.favorites[key])
         delete $scope.favorites[key];
         amplify.store("favorites", null);
         amplify.store("favorites",$scope.favorites)
+  
+        if (JSON.stringify($scope.favorites) === '{}') {
+            console.log("$scope.favorites empty")
+            $scope.goToUrl('departing')
+        }
 
     }
 
